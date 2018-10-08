@@ -1,12 +1,13 @@
 # c9.18_hackathon1
 
+## REVERSI
 ### REQUIREMENTS
 - Must have at least 2 players
-- Basically follow tic-tac-toe game play (ie alternating players, a number of contiguous cells in a row to win.
+- <a href="https://www.yourturnmyturn.com/rules/reversi.php" target="_blank">Basically follow reversi game play rules</a>(ie alternating players, bracketting a color with another flips that color.
 - Player-selected gameboard size between 3 or at least 5 size game board
 - Players must be displayed.  The turn of the player must be displayed
-- Player-selected win-condition size between 3 and the maximum current board size
-- Win condition must be able to be dynamically determined based off any size board
+- Win condition determined when all available playable spaces are taken
+- Current winner must be displayed.  Ie if black has more, black is showing as "Winning"
 - Mystery Requirement - Coming Thursday
 
 
@@ -18,45 +19,49 @@
 - Task Management  (Must add daniel.paschal@learningfuze.com to your project's meistertask)
 
 ### Instructions for participants:
-- Project lead fork this repo
+- Pick a project lead to fork the repo.
 - Add other team members as participants on your repo (click on the + in the top right corner, then "add collaborators".  Team members must accept the collaboration email.
 - Other team members clone the repo from the project lead's fork
 
 ### Teams
 ## Team 1
-- Randy Dang
-- Perry Tran
-- Dustin Dubia
+- Chris Kim
+- Marie Terrado
+- Edmund Park
 
 ## Team 2
-- Chase Caine
-- Jonathan Gallo
-- David Ahn
+- Oscar Anguino
+- Michael Esfahani
+- Kyle Umbarger
 
 ## Team 3
-- George Trendafilov
-- Esther Suh
-- Michael Salvati
+- Sasha Dykun
+- Julian So
+- Andrew Oautu
 
 ## Team 4
-- Steve Benedict
-- Sarah Han
-- Kyle Pamintuan
+- Michael Chu
+- Sridhar Madala
+- Andrew Moser
 
 ## Team 5
-- Gerald Blackmon
-- Rachel Pan
-- Mia Tran
+- Brandon Park
+- Yulia Chekan
+- Erin Tait
 
 ## Team 6
-- Jaytrin Apinchapong
-- Hyun Kim (Hank)
-- Tien Pham (Torrie)
+- Andy Park
+- Vienna Tran
+- Tiffany Kim
 
+## Team 6
+- Andrew Mirshafiee
+- Collin Stewart
+- extra requirement: must make game multiplayer between different computers.
 
 
 ### Requirement for submission
 - Live copy link to gh-pages: 
 	- must put code on gh-pages (copy the code to a branch called gh-pages, then access the live code via <your user name>.github.io/<repo name>/<main file name>)
 - Pull request link to code for commenting
-- Access to group's meistertask
+- Access to group's trello (trello.com) for daniel.paschal.com  (name your trello board c9.18_team<YOURTEAMNUM>)
