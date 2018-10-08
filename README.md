@@ -57,6 +57,7 @@
 ## Team 6
 - Andrew Mirshafiee
 - Collin Stewart
+- a mystery member from C6.18
 - extra requirement: must make game multiplayer between different computers.
 
 
