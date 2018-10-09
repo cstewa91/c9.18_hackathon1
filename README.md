@@ -55,7 +55,7 @@
 - Vienna Tran
 - Tiffany Kim
 
-## Team 6
+## Team 7
 - Andrew Mirshafiee
 - Collin Stewart
 - Jacob Taylor
