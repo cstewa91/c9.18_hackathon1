@@ -8,6 +8,7 @@
 - Players must be displayed.  The turn of the player must be displayed
 - Win condition determined when all available playable spaces are taken
 - Current winner must be displayed.  Ie if black has more, black is showing as "Winning"
+- MUST use Trello for task management
 - Mystery Requirement - Coming Thursday
 
 
