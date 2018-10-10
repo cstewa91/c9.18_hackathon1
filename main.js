@@ -1,0 +1,100 @@
+$(document).ready(initApp);
+function initApp(){
+    buildGameBoardArray();
+    buildGameBoard();
+    applyClickHandlers();
+    
+}
+//*******Globals****//
+var gameBoardArray;
+var destRow;
+var destCol;
+var blackTurn = true;
+var whiteTurn = false;
+var currentColor;
+var checkAdjacentObj = {
+    'up': [-1, 0],
+    'upRight': [-1, 1],
+    'right': [0, 1],
+    'downRight': [1, 1],
+    'down': [1, 0],
+    'downLeft': [1, -1],
+    'left': [0, -1],
+    'upLeft': [-1, -1]
+}
+var oppPieceObj = {
+    'b': 'w',
+    'w': 'b'
+}
+var directionToCheck = null;
+
+function buildGameBoardArray(){
+    gameBoardArray = [
+        ['', '', '', '', '', '', '', '' ],
+        ['', '', '', '', '', '', '', '' ],
+        ['', '', '', '', '', '', '', '' ],
+        ['', '', '', 'w', 'b', '', '', '' ],
+        ['', '', '', 'b', 'w', '', '', '' ],
+        ['', '', '', '', '', '', '', '' ],
+        ['', '', '', '', '', '', '', '' ],
+        ['', '', '', '', '', '', '', '' ]
+    ]
+}
+function buildGameBoard(){
+    var gameArea = $('.gameboard');
+    for(var i = 0; i< gameBoardArray.length; i++){
+        for(var j = 0; j< gameBoardArray.length; j++){
+            if(gameBoardArray[i][j] === ''){
+                var boardDiv = $('<div>').addClass('gameboard-tile').attr({'row': i,'col': j});
+                var topDiv = $('<div>').addClass('top-div').attr({'row': i,'col': j});
+                boardDiv.append(topDiv);
+            } else if(gameBoardArray[i][j] === 'w'){
+                var boardDiv = $('<div>').addClass('gameboard-tile').attr({'row': i,'col': j});
+                var topDiv = $('<div>').addClass('top-div white-piece').attr({'row': i,'col': j});
+                boardDiv.append(topDiv);
+            } else {
+                var boardDiv = $('<div>').addClass('gameboard-tile').attr({'row': i,'col': j});
+                var topDiv = $('<div>').addClass('top-div black-piece').attr({'row': i,'col': j});
+                boardDiv.append(topDiv);
+            }
+            gameArea.append(boardDiv);
+        }
+    }
+}
+function applyClickHandlers(){
+    $(".gameboard").on('click', '.gameboard-tile', handleBoardClick);
+}
+
+function handleBoardClick(){
+    if(blackTurn){
+        currentColor = 'b';   
+    } else{
+        currentColor = 'w';
+    }
+    destRow = parseInt($(event.target).attr('row'));
+    destCol = parseInt($(event.target).attr('col'));
+    if(gameBoardArray[destRow][destCol] !== ''){
+        console.log('Tile is not empty');
+        return;
+    }
+    checkAdjacentTiles();
+}
+function checkAdjacentTiles(){
+    for( key in checkAdjacentObj){
+        var adjTileRow = destRow + checkAdjacentObj[key][0];
+        var adjTileCol = destCol + checkAdjacentObj[key][1];
+        if(adjTileRow > 7 || adjTileRow < 0){
+            break;
+        }
+        if(adjTileCol > 7 || adjTileCol < 0){
+            break;
+        }
+        if(gameBoardArray[adjTileRow][adjTileCol] === oppPieceObj[currentColor]){
+            directionToCheck = key;
+        }
+        if(directionToCheck){
+            console.log(directionToCheck);
+        }
+        directionToCheck = null;    
+    }
+}

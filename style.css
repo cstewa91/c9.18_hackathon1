@@ -1,0 +1,51 @@
+html, body{
+    margin: 0;
+    font-size: 0;
+}
+*{
+    box-sizing: border-box;
+}
+.main-cont {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+.gameboard{
+    height: 80%;
+    width:60%;
+    position: relative;
+    top: 10%;
+    left: 20%;
+    border: 1px solid red;
+}
+.gameboard-tile{
+    height: 12.5%;
+    width: 12.5%;
+    position: relative;
+    border: 1px solid blue;
+    display: inline-block;
+    background-color: green;
+}
+.top-div{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+.white-piece{
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid white;
+    top: 10%;
+    left: 10%;
+    height: 80%;
+    width: 80%;
+}
+.black-piece{
+    background-color: black;
+    border-radius: 50%;
+    border: 1px solid black;
+    top: 10%;
+    left: 10%;
+    height: 80%;
+    width: 80%;
+}
