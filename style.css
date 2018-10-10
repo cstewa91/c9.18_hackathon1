@@ -14,6 +14,7 @@ html, body{
     background-repeat: no-repeat;
     background-position: center;
 }
+
 .gameboard{
     display: inline-block;
     height: 60%;
@@ -76,5 +77,22 @@ html, body{
     top: 10%;
     left: 30%;
     background-color: lightgray;
+}
+
+
+.reset-button{
+    height: 10%;
+    width: 5%;
+    position: absolute;
+    font-size: 2vw;
+    left: 0%;
+    top: 0%;
+    text-align: center;
+    cursor: default;
+}
+
+.reset-button img{
+    height: 90%;
+    width: 90%;
 }
 
