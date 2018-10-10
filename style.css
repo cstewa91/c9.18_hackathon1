@@ -59,6 +59,7 @@ html, body{
     height: 80%;
     width: 80%;
 }
+
 .pointsWhite{
     position: relative;
     display: inline-block;
@@ -77,6 +78,7 @@ html, body{
     left: 30%;
     background-color: lightgray;
 }
+
 
 .reset-button{
     height: 10%;
