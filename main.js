@@ -12,6 +12,7 @@ var destCol;
 var blackTurn = true;
 var whiteTurn = false;
 var currentColor;
+var canIClick = true;
 var checkAdjacentObj = {
     'up': [-1, 0],
     'upRight': [-1, 1],
@@ -26,6 +27,8 @@ var oppPieceObj = {
     'b': 'w',
     'w': 'b'
 }
+var counterObj = {};
+var turnTrackerObj = {}
 var directionToCheck = null;
 
 function buildGameBoardArray(){
@@ -78,23 +81,98 @@ function handleBoardClick(){
         return;
     }
     checkAdjacentTiles();
+    if(turnTrackerObj[currentColor] !== undefined){
+        switchTurns();  
+    }  
 }
 function checkAdjacentTiles(){
+    console.log('in checkadjtile function')
     for( key in checkAdjacentObj){
         var adjTileRow = destRow + checkAdjacentObj[key][0];
         var adjTileCol = destCol + checkAdjacentObj[key][1];
         if(adjTileRow > 7 || adjTileRow < 0){
-            break;
+            continue;
         }
         if(adjTileCol > 7 || adjTileCol < 0){
-            break;
+            continue;
         }
         if(gameBoardArray[adjTileRow][adjTileCol] === oppPieceObj[currentColor]){
             directionToCheck = key;
         }
         if(directionToCheck){
-            console.log(directionToCheck);
+            console.log('direction', directionToCheck)
+            directionCheck(directionToCheck, adjTileRow, adjTileCol);
         }
         directionToCheck = null;    
     }
+    
+}
+function directionCheck(direction, adjTileRow, adjTileCol){
+    console.log('in direction check fun')
+    var nextTileRow = adjTileRow + checkAdjacentObj[direction][0];
+    var nextTileCol = adjTileCol + checkAdjacentObj[direction][1];
+    if(nextTileRow > 7 || nextTileRow < 0){
+        console.log('off board')
+        return;
+    }
+    if(nextTileCol > 7 || nextTileCol < 0){
+        console.log('off board')
+        return;
+    }
+    if(gameBoardArray[nextTileRow][nextTileCol] === ''){
+        return;
+    }
+    if(gameBoardArray[nextTileRow][nextTileCol] === currentColor){
+        console.log('test1')
+        if(counterObj[direction] === undefined){
+            counterObj[direction] = 1;
+        } else {
+            counterObj[direction] += 1;
+        }
+        changePieces(direction, nextTileRow, nextTileCol);
+        return;
+    }
+    if(gameBoardArray[nextTileRow][nextTileCol] === oppPieceObj[currentColor]){
+        console.log('test2')
+        if(counterObj[direction] === undefined){
+            counterObj[direction] = 1;
+        } else {
+            counterObj[direction] += 1;
+        }
+        directionCheck(direction, nextTileRow, nextTileCol);
+        return;
+    }
+}
+
+function changePieces(direction){
+    if(turnTrackerObj[currentColor] === undefined){
+        turnTrackerObj[currentColor] = 1;
+    } else{
+        turnTrackerObj[currentColor] += 1;
+    }
+    var changedRow = destRow;
+    var changedCol = destCol;
+    gameBoardArray[destRow][destCol] = currentColor;
+    for(var i = 0; i < counterObj[direction]+1; i++){
+        console.log('for loop', counterObj[direction])
+        changedRow = changedRow + checkAdjacentObj[direction][0];
+        changedCol = changedCol + checkAdjacentObj[direction][1];
+        gameBoardArray[changedRow][changedCol] = currentColor;
+        
+    }
+    console.log(gameBoardArray)
+    $('.gameboard').empty();
+    buildGameBoard();
+}
+function switchTurns(){
+    if(blackTurn){
+        blackTurn = false;
+        whiteTurn = true;
+    } else {
+        blackTurn = true;
+        whiteTurn = false;
+    }
+    console.log('current turns black: ', blackTurn)
+    turnTrackerObj = {};
+    counterObj = {};
 }
