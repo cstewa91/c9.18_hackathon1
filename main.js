@@ -9,10 +9,10 @@ function initApp(){
 var gameBoardArray;
 var destRow;
 var destCol;
+var timer;
 var blackTurn = true;
 var whiteTurn = false;
 var currentColor;
-var canIClick = true;
 var checkAdjacentObj = {
     'up': [-1, 0],
     'upRight': [-1, 1],
@@ -30,6 +30,7 @@ var oppPieceObj = {
 var counterObj = {};
 var turnTrackerObj = {}
 var directionToCheck = null;
+var hasTimerStarted = false;
 
 function buildGameBoardArray(){
     gameBoardArray = [
@@ -66,6 +67,18 @@ function buildGameBoard(){
 }
 function applyClickHandlers(){
     $(".gameboard").on('click', '.gameboard-tile', handleBoardClick);
+    $(".reset-button").on('click', resetBoard)
+}
+
+function resetBoard(){
+    blackTurn = true;
+    whiteTurn = false;
+    counterObj = {};
+    directionToCheck = null;
+    turnTrackerObj = {};
+    $('.gameboard').empty();
+    buildGameBoardArray();
+    buildGameBoard();
 }
 
 function handleBoardClick(){
@@ -145,6 +158,10 @@ function directionCheck(direction, adjTileRow, adjTileCol){
 }
 
 function changePieces(direction){
+    if(!hasTimerStarted){
+        startTimer();
+        hasTimerStarted = true;
+    }
     if(turnTrackerObj[currentColor] === undefined){
         turnTrackerObj[currentColor] = 1;
     } else{
@@ -153,7 +170,7 @@ function changePieces(direction){
     var changedRow = destRow;
     var changedCol = destCol;
     gameBoardArray[destRow][destCol] = currentColor;
-    for(var i = 0; i < counterObj[direction]+1; i++){
+    for(var i = 0; i < counterObj[direction]; i++){
         console.log('for loop', counterObj[direction])
         changedRow = changedRow + checkAdjacentObj[direction][0];
         changedCol = changedCol + checkAdjacentObj[direction][1];
@@ -173,6 +190,22 @@ function switchTurns(){
         whiteTurn = false;
     }
     console.log('current turns black: ', blackTurn)
-    turnTrackerObj = {}
+    turnTrackerObj = {};
     counterObj = {};
 }
+
+function startTimer(){
+    var counter = 0;
+    var minutes = 0;
+    timer = setInterval(function(){
+        if(counter < 59){
+        counter++;
+        console.log(counter);
+        }else{
+            minutes++;
+            counter = 0;    
+            console.log('minutes',minutes);
+        }
+    }, 1000); 
+}
+
