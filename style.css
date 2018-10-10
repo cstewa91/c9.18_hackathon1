@@ -47,6 +47,7 @@ html, body{
     left: 10%;
     height: 80%;
     width: 80%;
+    box-shadow: 1.5px 1.5px 5px grey;
 }
 .black-piece{
     background-image: url(images/blackpiece.png);
@@ -58,6 +59,7 @@ html, body{
     left: 10%;
     height: 80%;
     width: 80%;
+    box-shadow: 1.5px 1.5px 5px grey;
 }
 
 .pointsWhite{
