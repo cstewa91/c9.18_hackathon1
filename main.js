@@ -173,6 +173,6 @@ function switchTurns(){
         whiteTurn = false;
     }
     console.log('current turns black: ', blackTurn)
-    turnTrackerObj = {};
+    turnTrackerObj = {}
     counterObj = {};
 }
