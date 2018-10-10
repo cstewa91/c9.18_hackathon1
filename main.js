@@ -66,6 +66,18 @@ function buildGameBoard(){
 }
 function applyClickHandlers(){
     $(".gameboard").on('click', '.gameboard-tile', handleBoardClick);
+    $(".reset-button").on('click', resetBoard)
+}
+
+function resetBoard(){
+    blackTurn = true;
+    whiteTurn = false;
+    counterObj = {};
+    directionToCheck = null;
+    turnTrackerObj = {};
+    $('.gameboard').empty();
+    buildGameBoardArray();
+    buildGameBoard();
 }
 
 function handleBoardClick(){
@@ -153,7 +165,7 @@ function changePieces(direction){
     var changedRow = destRow;
     var changedCol = destCol;
     gameBoardArray[destRow][destCol] = currentColor;
-    for(var i = 0; i < counterObj[direction]+1; i++){
+    for(var i = 0; i < counterObj[direction]; i++){
         console.log('for loop', counterObj[direction])
         changedRow = changedRow + checkAdjacentObj[direction][0];
         changedCol = changedCol + checkAdjacentObj[direction][1];
