@@ -147,6 +147,51 @@ html, body{
     background-repeat: no-repeat;
 }
 
+
+.white-seconds{
+    position: relative;
+    height: 10%;
+    width: 10%;
+    left: 28%;
+    top: 40%;
+    font-size: 5vmin;
+    font-family: alarm;
+    display: inline-block;
+}
+
+.white-minutes{
+    position: relative;
+    height: 10%;
+    width: 10%;
+    left: 30%;
+    top: 40%;
+    font-size: 5vmin;
+    font-family: alarm;
+    display: inline-block;
+}
+
+.black-seconds{
+    position: relative;
+    height: 10%;
+    width: 10%;
+    left: 28%;
+    top: 40%;
+    font-size: 5vmin;
+    font-family: alarm;
+    display: inline-block;
+}
+
+.black-minutes{
+    position: relative;
+    height: 10%;
+    width: 10%;
+    left: 30%;
+    top: 40%;
+    font-size: 5vmin;
+    font-family: alarm;
+    display: inline-block;
+}
+
 /***********Animation***********/
 
 @keyframes hop {
@@ -155,6 +200,14 @@ html, body{
     50% {top: 30%}
     75% {top: 29%}
     100% {top: 30%}
+}
+
+
+/***********Alarm Font***********/
+
+@font-face {
+    font-family: alarm;
+    src: url(Alarm/DS-DIGII.TTF);
 }
 
 
