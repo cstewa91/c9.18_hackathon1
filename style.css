@@ -73,6 +73,9 @@ html, body{
     height: 80%;
     width: 80%;
 }
+
+/*** Scoreboards ***/
+
 .pointsboard-black{
     position: relative;
     display: inline-block;
@@ -119,6 +122,9 @@ html, body{
     position: relative;
     top: 30%;
 }
+
+/*** Reset Button ***/
+
 .reset-button{
     position: absolute;
     height: 100%;
@@ -135,8 +141,8 @@ html, body{
     position: absolute;
     top: 3%;
     right: 3%;
-    height: 5%;
-    width: 10%;
+    height: 4%;
+    width: 8%;
     cursor: pointer;
 }
 .reset:hover .reset-button{  
@@ -148,13 +154,39 @@ html, body{
 }
 .reset > p {
     display: inline-block;
-    font-size: 3.5vmin;
+    font-size: 3vmin;
+    position: relative;
+    bottom: 60%;
+    left: 47%;
+    font-family: 'Cabin Sketch', cursive;
+    transition: all 0.5s ease;
+}
+
+/*** Rules ***/
+
+.rules {
+    position: absolute;
+    top: 7%;
+    right: 3%;
+    height: 4%;
+    width: 8%;
+    cursor: pointer;
+}
+.rules > p {
+    display: inline-block;
+    font-size: 3vmin;
     position: relative;
     bottom: 55%;
     left: 47%;
     font-family: 'Cabin Sketch', cursive;
     transition: all 0.5s ease;
 }
+.rules:hover p{
+    color: lightgrey;
+}
+
+/*** Clock ***/
+
 .timer{
     position: absolute;
     bottom: 4%;
@@ -166,7 +198,6 @@ html, body{
     background-size: contain;
     background-repeat: no-repeat;
 }
-/***********Modal***************/
 
 .white-seconds{
     position: relative;
@@ -212,12 +243,13 @@ html, body{
     display: inline-block;
 }
 
+/*** Intro Modal ***/
 
 .modal-background{
     position: absolute;
     height: 100%;
     width: 100%;
-    opacity: .8;
+    opacity: .85;
     background-color: grey;
     z-index: 5;
 }
@@ -227,11 +259,74 @@ html, body{
     left: 20%;
     height: 80%;
     width: 60%;
-    background-color: grey;
     z-index: 6;
     opacity: 1;
-    border: 2px solid black;
     text-align: center;
+}
+.intro-modal > h1 {
+    font-family: 'Righteous';
+    color: black;
+}
+.intro-modal div {
+    z-index: inherit;;
+}
+
+.playonline {
+    position: absolute;
+    height: 80%;
+    width: 40%;
+    left: 8%;
+    bottom: 10%;
+    background-image: url(images/playonline.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+}
+.playlocal {
+    position: absolute;
+    height: 80%;
+    width: 40%;
+    right: 8%;
+    bottom: 10%;
+    background-image: url(images/playlocal.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+}
+
+/*** Win Modal ***/
+
+.win-modal{
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    height: 80%;
+    width: 80%;
+    z-index: 7;
+    opacity: 1;
+    text-align: center;
+}
+.trophy{
+    position: absolute;
+    height: 70%;
+    left: 8%;
+    width: 60%;
+    bottom: 21%;
+    background-image: url(images/trophy.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+}
+.win-modal > h1 {
+    position: absolute;
+    color: whitesmoke;
+    font-family: 'Righteous';
+    bottom: 5%;
+    left: 18%;
+    letter-spacing: 20px;
 }
 .hidden {
     opacity: 0;
@@ -250,7 +345,6 @@ html, body{
     opacity: .8;
     animation: .6s fadein linear 0s 1;
 }
-
 .pass{
     font-size: 5vmin;
     position: absolute;
