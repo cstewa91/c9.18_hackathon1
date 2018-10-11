@@ -102,6 +102,7 @@ function buildGameBoard(){
 function applyClickHandlers(){
     $(".gameboard").on('click', '.gameboard-tile', handleBoardClick);
     $('.option1').on('click', multiStartLobby);
+    $('.option2').on('click', multiJoinLobby);
     $(".reset").on('click', resetBoard);
 }
 
@@ -150,6 +151,8 @@ function multiStartLobby(){
     createRefs();
 }
 function multiJoinLobby(){
+    console.log('test')
+    hideModal();
     multiplayer = true;
     blackTurn = false;
     whiteTurn = true;
@@ -176,8 +179,11 @@ function updateRefs(){
         myTurn = snapshot.val();
     });
     dbRef.on('value', function(snapshot) {
-        gameBoardArray = snapshot.val());
+        var array1 = snapshot.val();
+        gameBoardArray = array1.arr;
+        console.log('gameboardarrrr', array1.arr)
     });
+    
     $('.gameboard').empty();
     buildGameBoard();
 }
