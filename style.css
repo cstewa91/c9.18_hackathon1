@@ -249,7 +249,7 @@ html, body{
     position: absolute;
     height: 100%;
     width: 100%;
-    opacity: .85;
+    opacity: .8;
     background-color: grey;
     z-index: 5;
 }
@@ -343,7 +343,7 @@ html, body{
 }
 .show2 {
     opacity: .8;
-    animation: .6s fadein linear 0s 1;
+    animation: .6s fadein2 linear 0s 1;
 }
 .pass{
     font-size: 5vmin;
@@ -352,6 +352,9 @@ html, body{
     left: 30%;
     height: 10%;
     width: 10%;
+}
+.displaynone{
+    display: none;
 }
 
 /***********Animation***********/
