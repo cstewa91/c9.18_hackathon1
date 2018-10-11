@@ -1,10 +1,12 @@
 $(document).ready(initApp);
+
 function initApp(){
     buildGameBoardArray();
     buildGameBoard();
     applyClickHandlers();
     $('.pointsboard-black').addClass('chip-hop');
 }
+
 //*******Globals****//
 var gameBoardArray;
 var destRow;
