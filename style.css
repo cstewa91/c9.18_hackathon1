@@ -168,6 +168,51 @@ html, body{
 }
 /***********Modal***************/
 
+.white-seconds{
+    position: relative;
+    height: 10%;
+    width: 10%;
+    left: 28%;
+    top: 40%;
+    font-size: 5vmin;
+    font-family: alarm;
+    display: inline-block;
+}
+
+.white-minutes{
+    position: relative;
+    height: 10%;
+    width: 10%;
+    left: 30%;
+    top: 40%;
+    font-size: 5vmin;
+    font-family: alarm;
+    display: inline-block;
+}
+
+.black-seconds{
+    position: relative;
+    height: 10%;
+    width: 10%;
+    left: 28%;
+    top: 40%;
+    font-size: 5vmin;
+    font-family: alarm;
+    display: inline-block;
+}
+
+.black-minutes{
+    position: relative;
+    height: 10%;
+    width: 10%;
+    left: 30%;
+    top: 40%;
+    font-size: 5vmin;
+    font-family: alarm;
+    display: inline-block;
+}
+
+
 .modal-background{
     position: absolute;
     height: 100%;
@@ -205,6 +250,7 @@ html, body{
     opacity: .8;
     animation: .6s fadein linear 0s 1;
 }
+
 /***********Animation***********/
 
 @keyframes hop {
@@ -234,4 +280,12 @@ html, body{
     from {opacity: 0;}
     to  {opacity: .8;}
 }
+
+/***********Alarm Font***********/
+
+@font-face {
+    font-family: alarm;
+    src: url(Alarm/DS-DIGII.TTF);
+}
+
 

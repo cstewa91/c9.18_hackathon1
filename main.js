@@ -34,6 +34,10 @@ var counterObj = {};
 var turnTrackerObj = {}
 var directionToCheck = null;
 var hasTimerStarted = false;
+var blackSeconds = 0;
+var blackMinutes = 0;
+var whiteSeconds = 0;
+var whiteMinutes = 0;
 
 // Score Board
 function keepScore(){
@@ -108,6 +112,14 @@ function resetBoard(){
     stopTimer();
     $('.pointsboard-white').removeClass('chip-hop');
     $('.pointsboard-black').addClass('chip-hop');
+    blackSeconds = 0;
+    blackMinutes = 0;
+    whiteSeconds = 0;
+    whiteMinutes = 0;
+    $('.white-seconds').text('0'+ whiteSeconds)
+    $('.white-minutes').text(whiteMinutes)
+    $('.black-seconds').text('0'+ blackSeconds)
+    $('.black-minutes').text(blackMinutes)
 
 }
 
@@ -181,10 +193,6 @@ function directionCheck(direction, adjTileRow, adjTileCol){
 }
 
 function changePieces(direction){
-    if(!hasTimerStarted){
-        startTimer();
-        hasTimerStarted = true;
-    }
     if(turnTrackerObj[currentColor] === undefined){
         turnTrackerObj[currentColor] = 1;
     } else{
@@ -207,11 +215,15 @@ function switchTurns(){
     if(blackTurn){
         $('.pointsboard-black').removeClass('chip-hop');
         $('.pointsboard-white').addClass('chip-hop');
+        stopTimer();
+        startWhiteTimer();
         blackTurn = false;
         whiteTurn = true;
     } else {
         $('.pointsboard-white').removeClass('chip-hop');
         $('.pointsboard-black').addClass('chip-hop');
+        stopTimer();
+        startBlackTimer();
         blackTurn = true;
         whiteTurn = false;
     }
@@ -219,15 +231,44 @@ function switchTurns(){
     counterObj = {};
 }
 
-function startTimer(){
-    var counter = 0;
-    var minutes = 0;
+function startBlackTimer(){
     timer = setInterval(function(){
-        if(counter < 59){
-        counter++;
+        if(blackSeconds < 59){
+            blackSeconds++;
+            if(blackSeconds < 10){
+                $('.black-seconds').text('0'+ blackSeconds);
+            }else{
+                $('.black-seconds').text(blackSeconds);
+            }
         }else{
-            minutes++;
-            counter = 0;    
+            blackMinutes++;
+            blackSeconds = 0; 
+            if(blackMinutes < 10){
+                $('.black-minutes').text('0'+ blackMinutes);
+            }else{  
+                $('.black-minutes').text(blackMinutes);
+            } 
+        }
+    }, 1000); 
+}
+
+function startWhiteTimer(){
+    timer = setInterval(function(){
+        if(whiteSeconds < 59){
+            whiteSeconds++;
+            if(whiteSeconds < 10){
+                $('.white-seconds').text('0'+ whiteSeconds);
+            }else{
+                $('.white-seconds').text(whiteSeconds);
+            }
+        }else{
+            whiteMinutes++;
+            whiteSeconds = 0; 
+            if(whiteMinutes < 10){
+                $('.white-minutes').text('0'+ whiteMinutes);
+            }else{  
+                $('.white-minutes').text(whiteMinutes);
+            } 
         }
     }, 1000); 
 }
