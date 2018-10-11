@@ -121,20 +121,40 @@ html, body{
 }
 .reset-button{
     position: absolute;
-    height: 10%;
-    width: 5%;
-    position: absolute;
+    height: 100%;
+    width: 50%;
     font-size: 2vw;
-    left: 0%;
-    top: 0%;
     text-align: center;
-    cursor: default;
+    background-image: url(images/reset-button.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: all 1.5s ease;
 }
-.reset-button img{
-    height: 90%;
-    width: 90%;
+.reset{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    height: 5%;
+    width: 10%;
+    cursor: pointer;
+}
+.reset:hover .reset-button{  
+    transform: rotateZ(360deg);
 }
 
+.reset:hover p{
+    color: lightgrey;
+}
+.reset > p {
+    display: inline-block;
+    font-size: 3.5vmin;
+    position: relative;
+    bottom: 55%;
+    left: 47%;
+    font-family: 'Cabin Sketch', cursive;
+    transition: all 0.5s ease;
+}
 .timer{
     position: absolute;
     bottom: 4%;

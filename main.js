@@ -88,7 +88,7 @@ function buildGameBoard(){
 }
 function applyClickHandlers(){
     $(".gameboard").on('click', '.gameboard-tile', handleBoardClick);
-    $(".reset-button").on('click', resetBoard)
+    $(".reset").on('click', resetBoard)
 }
 
 function resetBoard(){
