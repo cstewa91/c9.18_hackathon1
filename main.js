@@ -116,10 +116,10 @@ function resetBoard(){
     blackMinutes = 0;
     whiteSeconds = 0;
     whiteMinutes = 0;
-    $('.white-seconds').text('0'+ whiteSeconds)
-    $('.white-minutes').text(whiteMinutes)
-    $('.black-seconds').text('0'+ blackSeconds)
-    $('.black-minutes').text(blackMinutes)
+    $('.white-seconds').text('0' + whiteSeconds)
+    $('.white-minutes').text('0' + whiteMinutes)
+    $('.black-seconds').text('0' + blackSeconds)
+    $('.black-minutes').text('0' + blackMinutes)
 
 }
 
