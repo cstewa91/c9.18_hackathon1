@@ -73,6 +73,9 @@ html, body{
     height: 80%;
     width: 80%;
 }
+
+/*** Scoreboards ***/
+
 .pointsboard-black{
     position: relative;
     display: inline-block;
@@ -119,6 +122,9 @@ html, body{
     position: relative;
     top: 30%;
 }
+
+/*** Reset Button ***/
+
 .reset-button{
     position: absolute;
     height: 100%;
@@ -135,8 +141,8 @@ html, body{
     position: absolute;
     top: 3%;
     right: 3%;
-    height: 5%;
-    width: 10%;
+    height: 4%;
+    width: 8%;
     cursor: pointer;
 }
 .reset:hover .reset-button{  
@@ -148,12 +154,35 @@ html, body{
 }
 .reset > p {
     display: inline-block;
-    font-size: 3.5vmin;
+    font-size: 3vmin;
+    position: relative;
+    bottom: 60%;
+    left: 47%;
+    font-family: 'Cabin Sketch', cursive;
+    transition: all 0.5s ease;
+}
+
+/*** Rules ***/
+
+.rules {
+    position: absolute;
+    top: 7%;
+    right: 3%;
+    height: 4%;
+    width: 8%;
+    cursor: pointer;
+}
+.rules > p {
+    display: inline-block;
+    font-size: 3vmin;
     position: relative;
     bottom: 55%;
     left: 47%;
     font-family: 'Cabin Sketch', cursive;
     transition: all 0.5s ease;
+}
+.rules:hover p{
+    color: lightgrey;
 }
 
 /*** Clock ***/
