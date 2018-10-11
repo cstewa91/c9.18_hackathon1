@@ -1,10 +1,12 @@
 $(document).ready(initApp);
+
 function initApp(){
     buildGameBoardArray();
     buildGameBoard();
     applyClickHandlers();
     $('.pointsboard-black').addClass('chip-hop');
 }
+
 //*******Globals****//
 var gameBoardArray;
 var destRow;
@@ -88,7 +90,7 @@ function buildGameBoard(){
 }
 function applyClickHandlers(){
     $(".gameboard").on('click', '.gameboard-tile', handleBoardClick);
-    $(".reset-button").on('click', resetBoard)
+    $(".reset").on('click', resetBoard)
 }
 
 function resetBoard(){
