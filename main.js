@@ -126,11 +126,12 @@ function buildGameBoard(){
 }
 function applyClickHandlers(){
     $(".gameboard").on('click', '.gameboard-tile', handleBoardClick);
-    $('.playlocal').on('click', hideIntroModal);
-    $('.playonline').on('click', hideIntroModal);
+    $(".playlocal").on('click', hideIntroModal);
+    $(".playonline").on('click', hideIntroModal);
     $(".reset").on('click', resetBoard);
     $(".pass").on('click', switchTurns);
     $(".pass").on('click', checkDoublePass);
+    $(".playagain").on('click', playAgain);
 }
 
 function resetBoard(){
@@ -332,7 +333,7 @@ function showIntroModal(){
 
 function hideWinModal(){
     $('.modal-background').addClass('hidden2');
-    $('.win-modal').addClass('hidden');
+    $('.win-modal').addClass('hidden displaynone');
 }
 
 function showWinModal(){
@@ -364,4 +365,9 @@ function checkDoublePass(){
         whitePassFlag = true;
         checkWinCondition(tallyWhite, tallyBlack);
     }
+}
+
+function playAgain(){
+    resetBoard();
+    hideWinModal(); 
 }

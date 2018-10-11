@@ -184,6 +184,22 @@ html, body{
 .rules:hover p{
     color: lightgrey;
 }
+/*** Pass Button ***/
+
+.pass{
+    font-size: 4vmin;
+    position: absolute;
+    bottom: 8%;
+    left: 32%;
+    height: 5%;
+    width: 6%;
+    cursor: pointer;
+    font-family: 'Cabin Sketch', cursive;
+}
+
+.pass:hover{
+    color: maroon;
+}
 
 /*** Clock ***/
 
@@ -318,15 +334,27 @@ html, body{
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    cursor: pointer;
 }
 .win-modal > h1 {
     position: absolute;
     color: whitesmoke;
     font-family: 'Righteous';
     bottom: 5%;
-    left: 18%;
+    left: 17%;
     letter-spacing: 20px;
+    font-size: 5vmin;
+}
+.playagain{
+    position: absolute;
+    height: 11%;
+    width: 20%;
+    background-image: url(images/playagain.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+    bottom: -5%;
+    left: 28%;
 }
 .hidden {
     opacity: 0;
@@ -344,14 +372,6 @@ html, body{
 .show2 {
     opacity: .8;
     animation: .6s fadein2 linear 0s 1;
-}
-.pass{
-    font-size: 5vmin;
-    position: absolute;
-    bottom: 10%;
-    left: 30%;
-    height: 10%;
-    width: 10%;
 }
 .displaynone{
     display: none;
