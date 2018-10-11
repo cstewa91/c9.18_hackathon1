@@ -1,8 +1,7 @@
 html, body{
     margin: 0;
-    font-size: 0;
 }
-*{
+* {
     box-sizing: border-box;
 }
 .main-cont {
@@ -14,6 +13,20 @@ html, body{
     background-repeat: no-repeat;
     background-position: center;
 }
+.title-bar{
+    position: absolute;
+    top: 2%;
+    left: 35%;
+    height: 15%;
+    width: 30%;
+    background-image: url(images/reversi.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+h1 {
+    color: whitesmoke;
+}
 .gameboard{
     display: inline-block;
     height: 60%;
@@ -23,6 +36,7 @@ html, body{
     left: 20%;
     border: 4px solid rgb(150, 114, 25);
     background-image: url(images/marble.jpg);
+    font-size: 0;
 }
 .gameboard-tile{
     height: 12.5%;
@@ -58,23 +72,45 @@ html, body{
     height: 80%;
     width: 80%;
 }
-
-.pointsWhite{
+.pointsboard-black{
     position: relative;
     display: inline-block;
-    height: 40%;
+    height: 20%;
     width: 10%;
-    top: 10%;
+    top: 30%;
     left: 10%;
-    background-color: lightgray;
+    background-image: url(images/blackpiece.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: top;
+    text-align: center;
 }
-.pointsBlack{
+.pointsboard-white{
     position: relative;
     display: inline-block;
-    height: 40%;
+    height: 20%;
     width: 10%;
-    top: 10%;
+    top: 30%;
     left: 30%;
-    background-color: lightgray;
+    background-image: url(images/whitepiece.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: top;
+    text-align: center;
 }
-
+.pointsB{
+    font-size: 6vmin;
+    color: whitesmoke;
+    font-family: 'Righteous', cursive;
+    position: relative;
+    top: 31%;
+}
+.pointsW{
+    font-size: 6vmin;
+    color: black;
+    font-family: 'Righteous', cursive;
+    position: relative;
+    top: 30%;
+}
