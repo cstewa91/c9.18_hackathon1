@@ -340,7 +340,8 @@ html, body{
     color: whitesmoke;
     font-family: 'Righteous';
     bottom: 5%;
-    left: 17%;
+    left: 40%;
+    transform: translateX(-50%);
     letter-spacing: 20px;
     font-size: 5vmin;
 }
