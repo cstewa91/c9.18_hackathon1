@@ -5,6 +5,7 @@ function initApp(){
     buildGameBoard();
     applyClickHandlers();
     $('.pointsboard-black').addClass('chip-hop');
+    
 }
 
 //*******Globals****//
@@ -51,7 +52,6 @@ function keepScore(){
     $('.pointsB').text(tallyBlack);
 }
 
-
 // Game Board Functions
 function buildGameBoardArray(){
     gameBoardArray = [
@@ -90,7 +90,8 @@ function buildGameBoard(){
 }
 function applyClickHandlers(){
     $(".gameboard").on('click', '.gameboard-tile', handleBoardClick);
-    $(".reset").on('click', resetBoard)
+    $('.option1').on('click', hideModal);
+    $(".reset").on('click', resetBoard);
 }
 
 function resetBoard(){
@@ -119,7 +120,6 @@ function handleBoardClick(){
     destRow = parseInt($(event.target).attr('row'));
     destCol = parseInt($(event.target).attr('col'));
     if(gameBoardArray[destRow][destCol] !== ''){
-        console.log('Tile is not empty');
         return;
     }
     checkAdjacentTiles();
@@ -128,7 +128,6 @@ function handleBoardClick(){
     }  
 }
 function checkAdjacentTiles(){
-    console.log('in checkadjtile function')
     for( key in checkAdjacentObj){
         var adjTileRow = destRow + checkAdjacentObj[key][0];
         var adjTileCol = destCol + checkAdjacentObj[key][1];
@@ -142,7 +141,6 @@ function checkAdjacentTiles(){
             directionToCheck = key;
         }
         if(directionToCheck){
-            console.log('direction', directionToCheck)
             directionCheck(directionToCheck, adjTileRow, adjTileCol);
         }
         directionToCheck = null;    
@@ -150,11 +148,9 @@ function checkAdjacentTiles(){
     
 }
 function directionCheck(direction, adjTileRow, adjTileCol){
-    console.log('in direction check fun')
     var nextTileRow = adjTileRow + checkAdjacentObj[direction][0];
     var nextTileCol = adjTileCol + checkAdjacentObj[direction][1];
     if(nextTileRow > 7 || nextTileRow < 0){
-        console.log('off board')
         return;
     }
     if(nextTileCol > 7 || nextTileCol < 0){
@@ -165,7 +161,6 @@ function directionCheck(direction, adjTileRow, adjTileCol){
         return;
     }
     if(gameBoardArray[nextTileRow][nextTileCol] === currentColor){
-        console.log('test1')
         if(counterObj[direction] === undefined){
             counterObj[direction] = 1;
         } else {
@@ -175,7 +170,6 @@ function directionCheck(direction, adjTileRow, adjTileCol){
         return;
     }
     if(gameBoardArray[nextTileRow][nextTileCol] === oppPieceObj[currentColor]){
-        console.log('test2')
         if(counterObj[direction] === undefined){
             counterObj[direction] = 1;
         } else {
@@ -200,13 +194,11 @@ function changePieces(direction){
     var changedCol = destCol;
     gameBoardArray[destRow][destCol] = currentColor;
     for(var i = 0; i < counterObj[direction]; i++){
-        console.log('for loop', counterObj[direction])
         changedRow = changedRow + checkAdjacentObj[direction][0];
         changedCol = changedCol + checkAdjacentObj[direction][1];
         gameBoardArray[changedRow][changedCol] = currentColor;
         
     }
-    console.log(gameBoardArray)
     $('.gameboard').empty();
     buildGameBoard();
 
@@ -223,7 +215,6 @@ function switchTurns(){
         blackTurn = true;
         whiteTurn = false;
     }
-    console.log('current turns black: ', blackTurn)
     turnTrackerObj = {};
     counterObj = {};
 }
@@ -234,11 +225,9 @@ function startTimer(){
     timer = setInterval(function(){
         if(counter < 59){
         counter++;
-        console.log(counter);
         }else{
             minutes++;
             counter = 0;    
-            console.log('minutes',minutes);
         }
     }, 1000); 
 }
@@ -247,3 +236,13 @@ function stopTimer(){
     clearInterval(timer);
 }
 
+function hideModal(){
+    $('.intro-modal').addClass('hidden');
+    $('.modal-background').addClass('hidden2');
+}
+function showModal(){
+    $('.intro-modal').removeClass('hidden');
+    $('.modal-background').removeClass('hidden2');
+    $('.intro-modal').addClass('show');
+    $('.modal-background').addClass('show2');
+}
