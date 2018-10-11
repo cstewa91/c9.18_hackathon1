@@ -66,16 +66,20 @@ function checkWinCondition(white, black){
     if(totalTally === 64){
         if(white > black){
             playerWon('White')
+            stopTimer();
         }else if(black > white){
             playerWon('Black')
+            stopTimer();
         }else{
             console.log('Tie');
         }
     }else if(whitePassFlag === true && blackPassFlag === true){
         if(white > black){
             playerWon('White')
+            stopTimer();
         }else if(black > white){
             playerWon('Black')
+            stopTimer();
         }else{
             console.log('Tie');
         }
