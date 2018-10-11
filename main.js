@@ -48,6 +48,8 @@ function applyClickHandlers(){
     $(".pass").on('click', switchTurns);
     $(".pass").on('click', checkDoublePass);
     $(".playagain").on('click', playAgain);
+    $(".rules").on('click', showRulesModal);
+    $(".rulebook").on('click', hideRulesModal);
 }
 
 // Game Board Functions
@@ -324,8 +326,10 @@ function showIntroModal(){
 }
 
 function hideWinModal(){
+    $('.win-modal').removeClass('show');
+    $('.modal-background').removeClass('show2');
     $('.modal-background').addClass('hidden2');
-    $('.win-modal').addClass('hidden displaynone');
+    $('.win-modal').addClass('hidden');
 }
 
 function showWinModal(){
@@ -333,6 +337,20 @@ function showWinModal(){
     $('.win-modal').removeClass('hidden displaynone')
     $('.modal-background').addClass('show2');
     $('.win-modal').addClass('show');
+}
+
+function showRulesModal(){
+    $('.modal-background').removeClass('hidden2');
+    $('.rule-modal').removeClass('hidden displaynone');;
+    $('.modal-background').addClass('show2');
+    $('.rule-modal').addClass('show');
+}
+
+function hideRulesModal(){
+    $('.rule-modal').removeClass('show');
+    $('.modal-background').removeClass('show2');
+    $('.modal-background').addClass('hidden2');
+    $('.rule-modal').addClass('hidden');
 }
 
 function checkDoublePass(){
@@ -357,6 +375,6 @@ function checkDoublePass(){
 }
 
 function playAgain(){
-    resetBoard();
     hideWinModal(); 
+    resetBoard();
 }
