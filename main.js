@@ -4,8 +4,7 @@ function initApp(){
     buildGameBoardArray();
     buildGameBoard();
     applyClickHandlers();
-    $('.pointsboard-black').addClass('chip-hop');
-    
+    $('.pointsboard-black').addClass('chip-hop'); 
 }
 
 //*******Globals****//
@@ -30,7 +29,7 @@ var oppPieceObj = {
     'b': 'w',
     'w': 'b'
 }
-var counterObj = {};
+var moveCounterObj = {};
 var turnTrackerObj = {}
 var directionToCheck = null;
 var hasTimerStarted = false;
@@ -41,61 +40,16 @@ var whiteMinutes = 0;
 var whitePassFlag = false;
 var blackPassFlag = false;
 
-
-
-// Score Board
-function keepScore(){
-    var tallyWhite = null;
-    var tallyBlack = null;
-    for( var i=0;i<gameBoardArray.length; i++){
-        for(var j=0;j<gameBoardArray[i].length;j++){
-            if (gameBoardArray[i][j] === 'b'){
-                tallyBlack++;
-            } else if (gameBoardArray[i][j] === 'w'){
-                tallyWhite++;
-            }
-        }
-    }
-    $('.pointsW').text(tallyWhite);
-    $('.pointsB').text(tallyBlack);
-    return tallyWhite + ' ' + tallyBlack;
-}
-
-function checkWinCondition(white, black){
-    var totalTally = white + black
-    if(totalTally === 64){
-        if(white > black){
-            playerWon('White')
-            stopTimer();
-        }else if(black > white){
-            playerWon('Black')
-            stopTimer();
-        }else{
-            playerWon('Tie')
-        }
-    }else if(whitePassFlag === true && blackPassFlag === true){
-        if(white > black){
-            playerWon('White')
-            stopTimer();
-        }else if(black > white){
-            playerWon('Black')
-            stopTimer();
-        }else{
-            playerWon('Tie')
-        }
-    }
-}
-
-function playerWon( player ){
-    if(player === 'White' || player === 'Black'){
-        $('.win-modal > h1').text(player + ' Wins!')
-        hideWinModal();
-        showWinModal();
-    }else{
-        $('.win-modal > h1').text("It's a " + player);
-        hideWinModal();
-        showWinModal();
-    }
+function applyClickHandlers(){
+    $(".gameboard").on('click', '.gameboard-tile', handleBoardClick);
+    $(".playlocal").on('click', hideIntroModal);
+    $(".playonline").on('click', hideIntroModal);
+    $(".reset").on('click', resetBoard);
+    $(".pass").on('click', switchTurns);
+    $(".pass").on('click', checkDoublePass);
+    $(".playagain").on('click', playAgain);
+    $(".rules").on('click', showRulesModal);
+    $(".rulebook").on('click', hideRulesModal);
 }
 
 // Game Board Functions
@@ -129,34 +83,21 @@ function buildGameBoard(){
                 boardDiv.append(topDiv);
             }
             gameArea.append(boardDiv);
-
         }
     }
     keepScore();
-}
-function applyClickHandlers(){
-    $(".gameboard").on('click', '.gameboard-tile', handleBoardClick);
-    $(".playlocal").on('click', hideIntroModal);
-    $(".playonline").on('click', hideIntroModal);
-    $(".reset").on('click', resetBoard);
-    $(".pass").on('click', switchTurns);
-    $(".pass").on('click', checkDoublePass);
-    $(".playagain").on('click', playAgain);
-    $(".rules").on('click', showRulesModal);
-    $(".rulebook").on('click', hideRulesModal);
 }
 
 function resetBoard(){
     blackTurn = true;
     whiteTurn = false;
-    counterObj = {};
+    moveCounterObj = {};
     directionToCheck = null;
     hasTimerStarted = false;
     turnTrackerObj = {};
     $('.gameboard').empty();
     buildGameBoardArray();
     buildGameBoard();
-    keepScore();
     stopTimer();
     $('.pointsboard-white').removeClass('chip-hop');
     $('.pointsboard-black').addClass('chip-hop');
@@ -208,6 +149,7 @@ function checkAdjacentTiles(){
     }
     
 }
+
 function directionCheck(direction, adjTileRow, adjTileCol){
     var nextTileRow = adjTileRow + checkAdjacentObj[direction][0];
     var nextTileCol = adjTileCol + checkAdjacentObj[direction][1];
@@ -215,26 +157,25 @@ function directionCheck(direction, adjTileRow, adjTileCol){
         return;
     }
     if(nextTileCol > 7 || nextTileCol < 0){
-        console.log('off board')
         return;
     }
     if(gameBoardArray[nextTileRow][nextTileCol] === ''){
         return;
     }
     if(gameBoardArray[nextTileRow][nextTileCol] === currentColor){
-        if(counterObj[direction] === undefined){
-            counterObj[direction] = 1;
+        if(moveCounterObj[direction] === undefined){
+            moveCounterObj[direction] = 1;
         } else {
-            counterObj[direction] += 1;
+            moveCounterObj[direction] += 1;
         }
         changePieces(direction, nextTileRow, nextTileCol);
         return;
     }
     if(gameBoardArray[nextTileRow][nextTileCol] === oppPieceObj[currentColor]){
-        if(counterObj[direction] === undefined){
-            counterObj[direction] = 1;
+        if(moveCounterObj[direction] === undefined){
+            moveCounterObj[direction] = 1;
         } else {
-            counterObj[direction] += 1;
+            moveCounterObj[direction] += 1;
         }
         directionCheck(direction, nextTileRow, nextTileCol);
         return;
@@ -250,21 +191,18 @@ function changePieces(direction){
     var changedRow = destRow;
     var changedCol = destCol;
     gameBoardArray[destRow][destCol] = currentColor;
-    for(var i = 0; i < counterObj[direction]; i++){
+    for(var i = 0; i < moveCounterObj[direction]; i++){
         changedRow = changedRow + checkAdjacentObj[direction][0];
         changedCol = changedCol + checkAdjacentObj[direction][1];
         gameBoardArray[changedRow][changedCol] = currentColor;
         
     }
     whitePassFlag = false;
-    console.log('white',whitePassFlag)
     blackPassFlag = false;
-    console.log('black',blackPassFlag);
-
     $('.gameboard').empty();
     buildGameBoard();
-
 }
+
 function switchTurns(){
     if(blackTurn){
         $('.pointsboard-black').removeClass('chip-hop');
@@ -282,7 +220,7 @@ function switchTurns(){
         whiteTurn = false;
     }
     turnTrackerObj = {};
-    counterObj = {};
+    moveCounterObj = {};
 }
 
 function startBlackTimer(){
@@ -332,6 +270,49 @@ function startWhiteTimer(){
 function stopTimer(){
     clearInterval(timer);
 }
+// Score Board
+function keepScore(){
+    var tallyWhite = null;
+    var tallyBlack = null;
+    for( var i=0;i<gameBoardArray.length; i++){
+        for(var j=0;j<gameBoardArray[i].length;j++){
+            if (gameBoardArray[i][j] === 'b'){
+                tallyBlack++;
+            } else if (gameBoardArray[i][j] === 'w'){
+                tallyWhite++;
+            }
+        }
+    }
+    $('.pointsW').text(tallyWhite);
+    $('.pointsB').text(tallyBlack);
+    checkWinCondition(tallyWhite, tallyBlack);
+    return tallyWhite + ' ' + tallyBlack;
+}
+
+function checkWinCondition(white, black){
+    var totalTally = white + black
+    if(totalTally === 64 || (whitePassFlag === true && blackPassFlag === true)){
+        if(white > black){
+            playerWon('White')
+            stopTimer();
+        }else if(black > white){
+            playerWon('Black')
+            stopTimer();
+        }else{
+            playerWon('Tie')
+        }
+    }
+}
+
+function playerWon( player ){
+    if(player === 'White' || player === 'Black'){
+        $('.win-modal > h1').text(player + ' Wins!');
+        showWinModal();
+    }else{
+        $('.win-modal > h1').text("It's a " + player);
+        showWinModal();
+    }
+}
 
 function hideIntroModal(){
     $('.intro-modal').addClass('hidden');
@@ -339,7 +320,7 @@ function hideIntroModal(){
 }
 function showIntroModal(){
     $('.intro-modal').removeClass('hidden');
-    $('.modal-background').removeClass('hidden2');
+    $('.modal-background').removeClass('hidden2 displaynone');
     $('.intro-modal').addClass('show');
     $('.modal-background').addClass('show2');
 }
@@ -352,7 +333,7 @@ function hideWinModal(){
 }
 
 function showWinModal(){
-    $('.modal-background').removeClass('hidden2');
+    $('.modal-background').removeClass('hidden2 displaynone');
     $('.win-modal').removeClass('hidden displaynone')
     $('.modal-background').addClass('show2');
     $('.win-modal').addClass('show');
@@ -378,14 +359,11 @@ function checkDoublePass(){
     var tallyWhite = parseInt(countsArray[0]);
     var tallyBlack = parseInt(countsArray[1]);
 
-    console.log('countsArray',countsArray);
     if(whitePassFlag === false && blackPassFlag === false){
         if(blackTurn){
             whitePassFlag = true;
-            console.log('white',whitePassFlag);
         }else{
             blackPassFlag = true;
-            console.log('black',blackPassFlag)
         }
     }else if(whitePassFlag === true && blackPassFlag === false){
         blackPassFlag = true;
