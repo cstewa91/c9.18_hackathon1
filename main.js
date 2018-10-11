@@ -39,7 +39,7 @@ var blackMinutes = 0;
 var whiteSeconds = 0;
 var whiteMinutes = 0;
 var multiplayer = true;
-var player1 = true;
+var isMyTurn = true;
 var gameLobby = 'temp';
 var gameLobbyTurn = null;
 var dbRef;
@@ -132,7 +132,7 @@ function resetBoard(){
 }
 function localPlay(){
     multiplayer = false;
-    player1 = true;
+    isMyTurn = true;
     gameLobby = null;
 }
 function multiStartLobby(){
@@ -140,7 +140,7 @@ function multiStartLobby(){
     multiplayer = true;
     blackTurn = true;
     whiteTurn = false;
-    player1 = true;
+    isMyTurn = true;
     gameLobby = 'temp';
     gameLobbyTurn = gameLobby + 'turn';
     firebase.database().ref('games/' + gameLobby).set({
@@ -157,7 +157,7 @@ function multiJoinLobby(){
     multiplayer = true;
     blackTurn = false;
     whiteTurn = true;
-    player1 = false;
+    isMyTurn = false;
     gameLobby = 'temp';
     gameLobbyTurn = gameLobby + 'turn';
     firebase.database().ref('games/' + gameLobbyTurn).set({
@@ -180,6 +180,7 @@ function updateRefs(){
     myTurnRef.on('value', function(snapshot) {
         myTurn = snapshot.val();
     });
+    
     dbRef.on('value', function(snapshot) {
         var array1 = snapshot.val();
         gameBoardArray = array1.arr;
@@ -191,7 +192,7 @@ function updateRefs(){
 }
 
 function handleBoardClick(){
-    if(multiplayer && !player1){
+    if(multiplayer && !isMyTurn){
         console.log('Multiplayer not my turn');
         return;
     }
@@ -284,6 +285,7 @@ function changePieces(direction){
 
 }
 function switchTurns(){
+    
     if(blackTurn){
         $('.pointsboard-black').removeClass('chip-hop');
         $('.pointsboard-white').addClass('chip-hop');
@@ -292,8 +294,8 @@ function switchTurns(){
         blackTurn = false;
         whiteTurn = true;
         
-        if(multiplayer && myTurn.blackTurn){
-            player1 = !player1
+        if(multiplayer){
+            isMyTurn = !isMyTurn
             firebase.database().ref('games/' + gameLobby).set({
                 arr: gameBoardArray
               });
@@ -309,8 +311,8 @@ function switchTurns(){
         startBlackTimer();
         blackTurn = true;
         whiteTurn = false;
-        if(multiplayer && !myTurn.blackTurn){
-            player1 = !player1
+        if(multiplayer){
+            isMyTurn = !isMyTurn
             firebase.database().ref('games/' + gameLobby).set({
                 arr: gameBoardArray
               });
@@ -322,6 +324,7 @@ function switchTurns(){
     }
     turnTrackerObj = {};
     counterObj = {};
+    console.log('myTurn', myTurn.blackTurn)
 }
 
 function startBlackTimer(){
