@@ -158,9 +158,7 @@ function multiJoinLobby(){
     whiteTurn = true;
     gameLobby = 'temp';
     gameLobbyTurn = gameLobby + 'turn';
-    firebase.database().ref('games/' + gameLobbyTurn).set({
-        blackTurn: false
-      });
+    
     createRefs();
 }
 function createRefs(){
