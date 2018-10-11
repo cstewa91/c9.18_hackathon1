@@ -65,21 +65,27 @@ function checkWinCondition(white, black){
     var totalTally = white + black
     if(totalTally === 64){
         if(white > black){
-            console.log('white wins');
+            playerWon('White')
         }else if(black > white){
-            console.log('black wins');
+            playerWon('Black')
         }else{
             console.log('Tie');
         }
     }else if(whitePassFlag === true && blackPassFlag === true){
         if(white > black){
-            console.log('white wins');
+            playerWon('White')
         }else if(black > white){
-            console.log('black wins');
+            playerWon('Black')
         }else{
             console.log('Tie');
         }
     }
+}
+
+function playerWon( player ){
+    $('.win-modal > h1').text(player + ' Wins!')
+    hideWinModal();
+    showWinModal();
 }
 
 // Game Board Functions
@@ -120,8 +126,8 @@ function buildGameBoard(){
 }
 function applyClickHandlers(){
     $(".gameboard").on('click', '.gameboard-tile', handleBoardClick);
-    $('.playlocal').on('click', hideModal);
-    $('.playonline').on('click', hideModal);
+    $('.playlocal').on('click', hideIntroModal);
+    $('.playonline').on('click', hideIntroModal);
     $(".reset").on('click', resetBoard);
     $(".pass").on('click', switchTurns);
     $(".pass").on('click', checkDoublePass);
@@ -313,15 +319,27 @@ function stopTimer(){
     clearInterval(timer);
 }
 
-function hideModal(){
+function hideIntroModal(){
     $('.intro-modal').addClass('hidden');
     $('.modal-background').addClass('hidden2');
 }
-function showModal(){
+function showIntroModal(){
     $('.intro-modal').removeClass('hidden');
     $('.modal-background').removeClass('hidden2');
     $('.intro-modal').addClass('show');
     $('.modal-background').addClass('show2');
+}
+
+function hideWinModal(){
+    $('.modal-background').addClass('hidden2');
+    $('.win-modal').addClass('hidden');
+}
+
+function showWinModal(){
+    $('.modal-background').removeClass('hidden2');
+    $('.win-modal').removeClass('hidden displaynone')
+    $('.modal-background').addClass('show2');
+    $('.win-modal').addClass('show');
 }
 
 function checkDoublePass(){
