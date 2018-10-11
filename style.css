@@ -19,7 +19,7 @@ html, body{
     top: 2%;
     left: 35%;
     height: 15%;
-    width: 30%;
+    width: 31%;
     background-image: url(images/reversi.png);
     background-size: contain;
     background-position: center;
@@ -121,20 +121,40 @@ html, body{
 }
 .reset-button{
     position: absolute;
-    height: 10%;
-    width: 5%;
-    position: absolute;
+    height: 100%;
+    width: 50%;
     font-size: 2vw;
-    left: 0%;
-    top: 0%;
     text-align: center;
-    cursor: default;
+    background-image: url(images/reset-button.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: all 1.5s ease;
 }
-.reset-button img{
-    height: 90%;
-    width: 90%;
+.reset{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    height: 5%;
+    width: 10%;
+    cursor: pointer;
+}
+.reset:hover .reset-button{  
+    transform: rotateZ(360deg);
 }
 
+.reset:hover p{
+    color: lightgrey;
+}
+.reset > p {
+    display: inline-block;
+    font-size: 3.5vmin;
+    position: relative;
+    bottom: 55%;
+    left: 47%;
+    font-family: 'Cabin Sketch', cursive;
+    transition: all 0.5s ease;
+}
 .timer{
     position: absolute;
     bottom: 4%;
@@ -146,7 +166,7 @@ html, body{
     background-size: contain;
     background-repeat: no-repeat;
 }
-
+/***********Modal***************/
 
 .white-seconds{
     position: relative;
@@ -192,6 +212,45 @@ html, body{
     display: inline-block;
 }
 
+
+.modal-background{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: .8;
+    background-color: grey;
+    z-index: 5;
+}
+.intro-modal{
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    height: 80%;
+    width: 60%;
+    background-color: grey;
+    z-index: 6;
+    opacity: 1;
+    border: 2px solid black;
+    text-align: center;
+}
+.hidden {
+    opacity: 0;
+    animation: .6s fadeout linear 0s 1;
+    z-index: -1;
+}.hidden2 {
+    opacity: 0;
+    animation: .6s fadeout2 linear 0s 1;
+    z-index: -1;
+}
+.show {
+    opacity: 1;
+    animation: .6s fadein linear 0s 1;
+}
+.show2 {
+    opacity: .8;
+    animation: .6s fadein linear 0s 1;
+}
+
 /***********Animation***********/
 
 @keyframes hop {
@@ -201,7 +260,26 @@ html, body{
     75% {top: 29%}
     100% {top: 30%}
 }
-
+@keyframes fadeout {
+    from {opacity: 1;
+            z-index: 6}
+    to {opacity: 0;
+            z-index: -1;}
+}
+@keyframes fadeout2 {
+    from {opacity: .8;
+            z-index: 5;}
+    to {opacity: 0;
+            z-index: -1;}
+}
+@keyframes fadein {
+    from {opacity: 0;}
+    to  {opacity: 1;}
+}
+@keyframes fadein2 {
+    from {opacity: 0;}
+    to  {opacity: .8;}
+}
 
 /***********Alarm Font***********/
 

@@ -6,13 +6,23 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
         <link rel="stylesheet" href="style.css">
-        <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Lobster|Righteous" rel="stylesheet">
         <script src="main.js"></script>
+        <script src= "multi.js"></script>
         <title>Reversi</title>
     </head>
     <body>
-        <div class = "main-cont">
-            <div class="reset-button">Reset<img src="images/Resetboard.png" alt=""></div>
+        <div class = "main-cont">       
+                <div class = 'modal-background'></div>
+                <div class = 'intro-modal'>
+                    <h1>Welcome, choose your play option</h1>
+                    <button class = 'option1'>1v1 Local</button>
+                    <button class = 'option2'>1v1 Online</button>
+                </div>
+            <div class="reset">
+                <div class="reset-button"></div>
+                <p>Reset</p>
+            </div>
             <div class="title-bar">
             </div>
                 <div class="pointsboard-black">
@@ -30,5 +40,19 @@
             </div>
         </div>    
 
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCArYmACtukWy_IT7MDbXfkdlLMqc2FDgc",
+        authDomain: "reversi-abc123.firebaseapp.com",
+        databaseURL: "https://reversi-abc123.firebaseio.com",
+        projectId: "reversi-abc123",
+        storageBucket: "reversi-abc123.appspot.com",
+        messagingSenderId: "957372485133"
+    };
+    firebase.initializeApp(config);
+    </script>
     </body>
 </html>
