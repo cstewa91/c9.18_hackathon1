@@ -32,6 +32,25 @@ var turnTrackerObj = {}
 var directionToCheck = null;
 var hasTimerStarted = false;
 
+// Score Board
+function keepScore(){
+    var tallyWhite = null;
+    var tallyBlack = null;
+    for( var i=0;i<gameBoardArray.length; i++){
+        for(var j=0;j<gameBoardArray[i].length;j++){
+            if (gameBoardArray[i][j] === 'b'){
+                tallyBlack++;
+            } else if (gameBoardArray[i][j] === 'w'){
+                tallyWhite++;
+            }
+        }
+    }
+    $('.pointsW').text(tallyWhite);
+    $('.pointsB').text(tallyBlack);
+}
+
+
+// Game Board Functions
 function buildGameBoardArray(){
     gameBoardArray = [
         ['', '', '', '', '', '', '', '' ],
@@ -62,8 +81,10 @@ function buildGameBoard(){
                 boardDiv.append(topDiv);
             }
             gameArea.append(boardDiv);
+
         }
     }
+    keepScore();
 }
 function applyClickHandlers(){
     $(".gameboard").on('click', '.gameboard-tile', handleBoardClick);
@@ -79,6 +100,7 @@ function resetBoard(){
     $('.gameboard').empty();
     buildGameBoardArray();
     buildGameBoard();
+    keepScore();
 }
 
 function handleBoardClick(){
@@ -180,6 +202,7 @@ function changePieces(direction){
     console.log(gameBoardArray)
     $('.gameboard').empty();
     buildGameBoard();
+
 }
 function switchTurns(){
     if(blackTurn){
