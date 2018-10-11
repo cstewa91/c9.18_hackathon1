@@ -312,6 +312,28 @@ html, body{
     cursor: pointer;
 }
 
+/*** Rule Modal ***/
+.rule-modal{
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    height: 80%;
+    width: 60%;
+    z-index: 7;
+    opacity: 1;
+    text-align: center;
+}
+
+.rulebook{
+    height: 100%;
+    width: 100%;
+}
+
+.rulebook img{
+    height: 100%;
+    
+}
+
 /*** Win Modal ***/
 
 .win-modal{
