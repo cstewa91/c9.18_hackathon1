@@ -96,13 +96,16 @@ function resetBoard(){
     whiteTurn = false;
     counterObj = {};
     directionToCheck = null;
+    hasTimerStarted = false;
     turnTrackerObj = {};
     $('.gameboard').empty();
     buildGameBoardArray();
     buildGameBoard();
     keepScore();
+    stopTimer();
     $('.pointsboard-white').removeClass('chip-hop');
     $('.pointsboard-black').addClass('chip-hop');
+
 }
 
 function handleBoardClick(){
@@ -236,5 +239,9 @@ function startTimer(){
             console.log('minutes',minutes);
         }
     }, 1000); 
+}
+
+function stopTimer(){
+    clearInterval(timer);
 }
 
