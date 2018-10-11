@@ -345,6 +345,15 @@ html, body{
     opacity: .8;
     animation: .6s fadein linear 0s 1;
 }
+.pass{
+    font-size: 5vmin;
+    position: absolute;
+    bottom: 10%;
+    left: 30%;
+    height: 10%;
+    width: 10%;
+}
+
 /***********Animation***********/
 
 @keyframes hop {

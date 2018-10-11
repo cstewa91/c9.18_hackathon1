@@ -38,6 +38,10 @@ var blackSeconds = 0;
 var blackMinutes = 0;
 var whiteSeconds = 0;
 var whiteMinutes = 0;
+var whitePassFlag = false;
+var blackPassFlag = false;
+
+
 
 // Score Board
 function keepScore(){
@@ -54,6 +58,28 @@ function keepScore(){
     }
     $('.pointsW').text(tallyWhite);
     $('.pointsB').text(tallyBlack);
+    return tallyWhite + ' ' + tallyBlack;
+}
+
+function checkWinCondition(white, black){
+    var totalTally = white + black
+    if(totalTally === 64){
+        if(white > black){
+            console.log('white wins');
+        }else if(black > white){
+            console.log('black wins');
+        }else{
+            console.log('Tie');
+        }
+    }else if(whitePassFlag === true && blackPassFlag === true){
+        if(white > black){
+            console.log('white wins');
+        }else if(black > white){
+            console.log('black wins');
+        }else{
+            console.log('Tie');
+        }
+    }
 }
 
 // Game Board Functions
@@ -97,6 +123,8 @@ function applyClickHandlers(){
     $('.playlocal').on('click', hideModal);
     $('.playonline').on('click', hideModal);
     $(".reset").on('click', resetBoard);
+    $(".pass").on('click', switchTurns);
+    $(".pass").on('click', checkDoublePass);
 }
 
 function resetBoard(){
@@ -208,6 +236,11 @@ function changePieces(direction){
         gameBoardArray[changedRow][changedCol] = currentColor;
         
     }
+    whitePassFlag = false;
+    console.log('white',whitePassFlag)
+    blackPassFlag = false;
+    console.log('black',blackPassFlag);
+
     $('.gameboard').empty();
     buildGameBoard();
 
@@ -244,6 +277,7 @@ function startBlackTimer(){
         }else{
             blackMinutes++;
             blackSeconds = 0; 
+            $('.black-seconds').text('0'+ blackSeconds);
             if(blackMinutes < 10){
                 $('.black-minutes').text('0'+ blackMinutes);
             }else{  
@@ -265,6 +299,7 @@ function startWhiteTimer(){
         }else{
             whiteMinutes++;
             whiteSeconds = 0; 
+            $('.white-seconds').text('0'+ whiteSeconds);
             if(whiteMinutes < 10){
                 $('.white-minutes').text('0'+ whiteMinutes);
             }else{  
@@ -287,4 +322,28 @@ function showModal(){
     $('.modal-background').removeClass('hidden2');
     $('.intro-modal').addClass('show');
     $('.modal-background').addClass('show2');
+}
+
+function checkDoublePass(){
+    var counts = keepScore();
+    var countsArray = counts.split(' ');
+    var tallyWhite = parseInt(countsArray[0]);
+    var tallyBlack = parseInt(countsArray[1]);
+
+    console.log('countsArray',countsArray);
+    if(whitePassFlag === false && blackPassFlag === false){
+        if(blackTurn){
+            whitePassFlag = true;
+            console.log('white',whitePassFlag);
+        }else{
+            blackPassFlag = true;
+            console.log('black',blackPassFlag)
+        }
+    }else if(whitePassFlag === true && blackPassFlag === false){
+        blackPassFlag = true;
+        checkWinCondition(tallyWhite, tallyBlack);
+    }else if(blackPassFlag === true && whitePassFlag === false){
+        whitePassFlag = true;
+        checkWinCondition(tallyWhite, tallyBlack);
+    }
 }
