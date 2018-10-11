@@ -204,6 +204,11 @@ function changePieces(direction){
 }
 
 function switchTurns(){
+    var counts = keepScore();
+    var countsArray = counts.split(' ');
+    var tallyWhite = parseInt(countsArray[0]);
+    var tallyBlack = parseInt(countsArray[1]);
+    checkWinCondition(tallyWhite, tallyBlack);
     if(blackTurn){
         $('.pointsboard-black').removeClass('chip-hop');
         $('.pointsboard-white').addClass('chip-hop');
@@ -285,7 +290,6 @@ function keepScore(){
     }
     $('.pointsW').text(tallyWhite);
     $('.pointsB').text(tallyBlack);
-    checkWinCondition(tallyWhite, tallyBlack);
     return tallyWhite + ' ' + tallyBlack;
 }
 
