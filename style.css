@@ -58,7 +58,7 @@ html, body{
     left: 10%;
     height: 80%;
     width: 80%;
-    box-shadow: 1.5px 1.5px 5px grey;
+    box-shadow: 1.5px 1.5px 5px rgb(173, 173, 173);
 }
 .black-piece{
     background-image: url(images/blackpiece.png);
@@ -70,7 +70,6 @@ html, body{
     left: 10%;
     height: 80%;
     width: 80%;
-    box-shadow: 1.5px 1.5px 5px grey;
 }
 .pointsboard-black{
     position: relative;
@@ -85,6 +84,9 @@ html, body{
     background-repeat: no-repeat;
     vertical-align: top;
     text-align: center;
+}
+.chip-hop{
+    animation: 1s hop linear infinite 0s;
 }
 .pointsboard-white{
     position: relative;
@@ -129,4 +131,15 @@ html, body{
     height: 90%;
     width: 90%;
 }
+
+/***********Animation***********/
+
+@keyframes hop {
+    0% {top: 30%}
+    25% {top: 27%}
+    50% {top: 30%}
+    75% {top: 29%}
+    100% {top: 30%}
+}
+
 
