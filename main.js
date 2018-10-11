@@ -71,7 +71,7 @@ function checkWinCondition(white, black){
             playerWon('Black')
             stopTimer();
         }else{
-            console.log('Tie');
+            playerWon('Tie')
         }
     }else if(whitePassFlag === true && blackPassFlag === true){
         if(white > black){
@@ -81,15 +81,21 @@ function checkWinCondition(white, black){
             playerWon('Black')
             stopTimer();
         }else{
-            console.log('Tie');
+            playerWon('Tie')
         }
     }
 }
 
 function playerWon( player ){
-    $('.win-modal > h1').text(player + ' Wins!')
-    hideWinModal();
-    showWinModal();
+    if(player === 'White' || player === 'Black'){
+        $('.win-modal > h1').text(player + ' Wins!')
+        hideWinModal();
+        showWinModal();
+    }else{
+        $('.win-modal > h1').text("It's a " + player);
+        hideWinModal();
+        showWinModal();
+    }
 }
 
 // Game Board Functions
