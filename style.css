@@ -13,6 +13,7 @@ html, body{
     background-repeat: no-repeat;
     background-position: center;
 }
+
 .title-bar{
     position: absolute;
     top: 2%;
@@ -23,9 +24,6 @@ html, body{
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-}
-h1 {
-    color: whitesmoke;
 }
 .gameboard{
     display: inline-block;
@@ -60,6 +58,7 @@ h1 {
     left: 10%;
     height: 80%;
     width: 80%;
+    box-shadow: 1.5px 1.5px 5px grey;
 }
 .black-piece{
     background-image: url(images/blackpiece.png);
@@ -71,6 +70,7 @@ h1 {
     left: 10%;
     height: 80%;
     width: 80%;
+    box-shadow: 1.5px 1.5px 5px grey;
 }
 .pointsboard-black{
     position: relative;
@@ -107,6 +107,7 @@ h1 {
     position: relative;
     top: 31%;
 }
+
 .pointsW{
     font-size: 6vmin;
     color: black;
@@ -114,3 +115,18 @@ h1 {
     position: relative;
     top: 30%;
 }
+.reset-button{
+    height: 10%;
+    width: 5%;
+    position: absolute;
+    font-size: 2vw;
+    left: 0%;
+    top: 0%;
+    text-align: center;
+    cursor: default;
+}
+.reset-button img{
+    height: 90%;
+    width: 90%;
+}
+

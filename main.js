@@ -9,10 +9,10 @@ function initApp(){
 var gameBoardArray;
 var destRow;
 var destCol;
+var timer;
 var blackTurn = true;
 var whiteTurn = false;
 var currentColor;
-var canIClick = true;
 var checkAdjacentObj = {
     'up': [-1, 0],
     'upRight': [-1, 1],
@@ -30,6 +30,7 @@ var oppPieceObj = {
 var counterObj = {};
 var turnTrackerObj = {}
 var directionToCheck = null;
+var hasTimerStarted = false;
 
 // Score Board
 function keepScore(){
@@ -179,6 +180,10 @@ function directionCheck(direction, adjTileRow, adjTileCol){
 }
 
 function changePieces(direction){
+    if(!hasTimerStarted){
+        startTimer();
+        hasTimerStarted = true;
+    }
     if(turnTrackerObj[currentColor] === undefined){
         turnTrackerObj[currentColor] = 1;
     } else{
@@ -208,6 +213,22 @@ function switchTurns(){
         whiteTurn = false;
     }
     console.log('current turns black: ', blackTurn)
-    turnTrackerObj = {}
+    turnTrackerObj = {};
     counterObj = {};
 }
+
+function startTimer(){
+    var counter = 0;
+    var minutes = 0;
+    timer = setInterval(function(){
+        if(counter < 59){
+        counter++;
+        console.log(counter);
+        }else{
+            minutes++;
+            counter = 0;    
+            console.log('minutes',minutes);
+        }
+    }, 1000); 
+}
+
