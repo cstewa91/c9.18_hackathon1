@@ -166,7 +166,8 @@ function resetBoard(){
     $('.white-minutes').text('0' + whiteMinutes)
     $('.black-seconds').text('0' + blackSeconds)
     $('.black-minutes').text('0' + blackMinutes)
-
+    whitePassFlag = false;
+    blackPassFlag = false;
 }
 
 function handleBoardClick(){
