@@ -140,6 +140,7 @@ function multiStartLobby(){
     multiplayer = true;
     blackTurn = true;
     whiteTurn = false;
+    player1 = true;
     gameLobby = 'temp';
     gameLobbyTurn = gameLobby + 'turn';
     firebase.database().ref('games/' + gameLobby).set({
@@ -156,9 +157,12 @@ function multiJoinLobby(){
     multiplayer = true;
     blackTurn = false;
     whiteTurn = true;
+    player1 = false;
     gameLobby = 'temp';
     gameLobbyTurn = gameLobby + 'turn';
-    
+    firebase.database().ref('games/' + gameLobbyTurn).set({
+        blackTurn: true
+      });
     createRefs();
 }
 function createRefs(){
@@ -187,7 +191,7 @@ function updateRefs(){
 }
 
 function handleBoardClick(){
-    if(multiplayer && !myTurn.blackTurn){
+    if(multiplayer && !player1){
         console.log('Multiplayer not my turn');
         return;
     }
@@ -289,6 +293,7 @@ function switchTurns(){
         whiteTurn = true;
         
         if(multiplayer && myTurn.blackTurn){
+            player1 = !player1
             firebase.database().ref('games/' + gameLobby).set({
                 arr: gameBoardArray
               });
@@ -305,6 +310,7 @@ function switchTurns(){
         blackTurn = true;
         whiteTurn = false;
         if(multiplayer && !myTurn.blackTurn){
+            player1 = !player1
             firebase.database().ref('games/' + gameLobby).set({
                 arr: gameBoardArray
               });
