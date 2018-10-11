@@ -96,11 +96,15 @@ function resetBoard(){
     whiteTurn = false;
     counterObj = {};
     directionToCheck = null;
+    hasTimerStarted = false;
     turnTrackerObj = {};
     $('.gameboard').empty();
     buildGameBoardArray();
     buildGameBoard();
     keepScore();
+    stopTimer()
+    
+
 }
 
 function handleBoardClick(){
@@ -230,5 +234,9 @@ function startTimer(){
             console.log('minutes',minutes);
         }
     }, 1000); 
+}
+
+function stopTimer(){
+    clearInterval(timer);
 }
 
