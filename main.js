@@ -94,7 +94,8 @@ function buildGameBoard(){
 }
 function applyClickHandlers(){
     $(".gameboard").on('click', '.gameboard-tile', handleBoardClick);
-    $('.option1').on('click', hideModal);
+    $('.playlocal').on('click', hideModal);
+    $('.playonline').on('click', hideModal);
     $(".reset").on('click', resetBoard);
 }
 

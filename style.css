@@ -155,6 +155,9 @@ html, body{
     font-family: 'Cabin Sketch', cursive;
     transition: all 0.5s ease;
 }
+
+/*** Clock ***/
+
 .timer{
     position: absolute;
     bottom: 4%;
@@ -166,7 +169,6 @@ html, body{
     background-size: contain;
     background-repeat: no-repeat;
 }
-/***********Modal***************/
 
 .white-seconds{
     position: relative;
@@ -212,12 +214,13 @@ html, body{
     display: inline-block;
 }
 
+/*** Modal ***/
 
 .modal-background{
     position: absolute;
     height: 100%;
     width: 100%;
-    opacity: .8;
+    opacity: .85;
     background-color: grey;
     z-index: 5;
 }
@@ -227,11 +230,16 @@ html, body{
     left: 20%;
     height: 80%;
     width: 60%;
-    background-color: grey;
     z-index: 6;
     opacity: 1;
-    border: 2px solid black;
     text-align: center;
+}
+.intro-modal > h1 {
+    font-family: 'Righteous';
+    color: black;
+}
+.intro-modal div {
+    z-index: inherit;;
 }
 .hidden {
     opacity: 0;
@@ -251,6 +259,30 @@ html, body{
     animation: .6s fadein linear 0s 1;
 }
 
+.playonline {
+    position: absolute;
+    height: 80%;
+    width: 40%;
+    left: 8%;
+    bottom: 10%;
+    background-image: url(images/playonline.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+}
+.playlocal {
+    position: absolute;
+    height: 80%;
+    width: 40%;
+    right: 8%;
+    bottom: 10%;
+    background-image: url(images/playlocal.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+}
 /***********Animation***********/
 
 @keyframes hop {
