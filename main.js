@@ -38,6 +38,13 @@ var blackSeconds = 0;
 var blackMinutes = 0;
 var whiteSeconds = 0;
 var whiteMinutes = 0;
+var multiplayer = true;
+var player1 = true;
+var gameLobby = 'temp';
+var gameLobbyTurn = null;
+var dbRef;
+var myTurnRef;
+var myTurn;
 
 // Score Board
 function keepScore(){
@@ -94,7 +101,7 @@ function buildGameBoard(){
 }
 function applyClickHandlers(){
     $(".gameboard").on('click', '.gameboard-tile', handleBoardClick);
-    $('.option1').on('click', hideModal);
+    $('.option1').on('click', multiStartLobby);
     $(".reset").on('click', resetBoard);
 }
 
@@ -122,8 +129,64 @@ function resetBoard(){
     $('.black-minutes').text('0' + blackMinutes)
 
 }
+function localPlay(){
+    multiplayer = false;
+    player1 = true;
+    gameLobby = null;
+}
+function multiStartLobby(){
+    hideModal();
+    multiplayer = true;
+    blackTurn = true;
+    whiteTurn = false;
+    gameLobby = 'temp';
+    gameLobbyTurn = gameLobby + 'turn';
+    firebase.database().ref('games/' + gameLobby).set({
+        arr: gameBoardArray
+      });
+    firebase.database().ref('games/' + gameLobbyTurn).set({
+        blackTurn: true
+    });
+    createRefs();
+}
+function multiJoinLobby(){
+    multiplayer = true;
+    blackTurn = false;
+    whiteTurn = true;
+    gameLobby = 'temp';
+    gameLobbyTurn = gameLobby + 'turn';
+    firebase.database().ref('games/' + gameLobbyTurn).set({
+        blackTurn: true
+      });
+    createRefs();
+}
+function createRefs(){
+    dbRef = firebase.database().ref('games/' + gameLobby );
+    dbRef.on('value', function(snapshot) {
+    console.log('dbsnapshot', snapshot.val());
+    });
+    myTurnRef = firebase.database().ref('games/' + gameLobbyTurn );
+    myTurnRef.on('value', function(snapshot) {
+    myTurn = snapshot.val();
+    });
+    console.log('myturn', myTurn.blackTurn)
+}
+function updateRefs(){
+    myTurnRef.on('value', function(snapshot) {
+        myTurn = snapshot.val();
+    });
+    dbRef.on('value', function(snapshot) {
+        gameBoardArray = snapshot.val());
+    });
+    $('.gameboard').empty();
+    buildGameBoard();
+}
 
 function handleBoardClick(){
+    if(multiplayer && !myTurn.blackTurn){
+        console.log('Multiplayer not my turn');
+        return;
+    }
     if(blackTurn){
         currentColor = 'b';   
     } else{
@@ -160,6 +223,7 @@ function checkAdjacentTiles(){
     
 }
 function directionCheck(direction, adjTileRow, adjTileCol){
+    console.log('arguments', arguments)
     var nextTileRow = adjTileRow + checkAdjacentObj[direction][0];
     var nextTileCol = adjTileCol + checkAdjacentObj[direction][1];
     if(nextTileRow > 7 || nextTileRow < 0){
@@ -219,6 +283,16 @@ function switchTurns(){
         startWhiteTimer();
         blackTurn = false;
         whiteTurn = true;
+        
+        if(multiplayer && myTurn.blackTurn){
+            firebase.database().ref('games/' + gameLobby).set({
+                arr: gameBoardArray
+              });
+            firebase.database().ref('games/' + gameLobbyTurn).set({
+                blackTurn: false
+            });
+            updateRefs();
+        }
     } else {
         $('.pointsboard-white').removeClass('chip-hop');
         $('.pointsboard-black').addClass('chip-hop');
@@ -226,6 +300,15 @@ function switchTurns(){
         startBlackTimer();
         blackTurn = true;
         whiteTurn = false;
+        if(multiplayer && !myTurn.blackTurn){
+            firebase.database().ref('games/' + gameLobby).set({
+                arr: gameBoardArray
+              });
+            firebase.database().ref('games/' + gameLobbyTurn).set({
+                blackTurn: true
+            });
+            updateRefs();
+        }
     }
     turnTrackerObj = {};
     counterObj = {};

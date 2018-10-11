@@ -4,6 +4,20 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+
+        <script>
+                // Initialize Firebase
+                var config = {
+                    apiKey: "AIzaSyCArYmACtukWy_IT7MDbXfkdlLMqc2FDgc",
+                    authDomain: "reversi-abc123.firebaseapp.com",
+                    databaseURL: "https://reversi-abc123.firebaseio.com",
+                    projectId: "reversi-abc123",
+                    storageBucket: "reversi-abc123.appspot.com",
+                    messagingSenderId: "957372485133"
+                };
+                firebase.initializeApp(config);
+                </script>
         <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Lobster|Righteous" rel="stylesheet">
@@ -40,19 +54,7 @@
             </div>
         </div>    
 
-    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
     
-    <script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyCArYmACtukWy_IT7MDbXfkdlLMqc2FDgc",
-        authDomain: "reversi-abc123.firebaseapp.com",
-        databaseURL: "https://reversi-abc123.firebaseio.com",
-        projectId: "reversi-abc123",
-        storageBucket: "reversi-abc123.appspot.com",
-        messagingSenderId: "957372485133"
-    };
-    firebase.initializeApp(config);
-    </script>
+    
     </body>
 </html>
