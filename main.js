@@ -4,7 +4,6 @@ function initApp(){
     buildGameBoardArray();
     buildGameBoard();
     applyClickHandlers();
-    $('.pointsboard-black').addClass('chip-hop');
     
 }
 
@@ -57,6 +56,7 @@ var database = firebase.database();
 var databaseLobby;
 
 function startFirebaseLobby(){
+    $('.pointsboard-black').addClass('chip-hop');
     var lobbyName = $('.startlobbyinput').val();
     hideLobbyModal();
     myPlayerColor = 'black';
@@ -73,6 +73,7 @@ function startFirebaseLobby(){
     databaseLobby.on("value", gotData)
 }
 function joinFirebaseLobby(){
+    $('.pointsboard-black').addClass('chip-hop');
     var lobbyName = $('.joinlobbyinput').val();
     hideLobbyModal();
     myPlayerColor = 'white';
@@ -109,8 +110,6 @@ function gotData(data){
 
 function applyClickHandlers(){
     $(".gameboard").on('click', '.gameboard-tile', handleBoardClick);
-    $(".playlocal").on('click', hideIntroModal);
-    $(".playonline").on('click', hideIntroModal);
     $(".reset").on('click', resetBoard);
     $(".pass").on('click', switchTurns);
     $(".pass").on('click', checkDoublePass);
@@ -432,6 +431,7 @@ function playerWon( player ){
 // }
 
 function showLobbyModal(){
+    goToLobbyModal();
     $('.intro-modal').addClass('hidden');
     $('.lobby-modal').removeClass('displaynone');
     $('.lobby-modal').addClass('show');
@@ -442,9 +442,13 @@ function hideLobbyModal(){
     $('.modal-background').addClass('hidden2');
 }
 
-function hideIntroModal(){
+function goToLobbyModal(){
     $('.intro-modal').addClass('hidden');
-    // $('.modal-background').addClass('hidden2');
+}
+function hideIntroModal(){
+    $('.pointsboard-black').addClass('chip-hop');
+    $('.intro-modal').addClass('hidden');
+    $('.modal-background').addClass('hidden2');
 }
 function showIntroModal(){
     $('.intro-modal').removeClass('hidden');
