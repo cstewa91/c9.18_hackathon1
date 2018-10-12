@@ -57,8 +57,10 @@ var database = firebase.database();
 var databaseLobby;
 
 function startFirebaseLobby(){
+    var lobbyName = $('.startlobbyinput').val();
+    hideLobbyModal();
     myPlayerColor = 'black';
-    databaseLobby = database.ref('temp');
+    databaseLobby = database.ref(lobbyName);
     var data = {
         gameArray: gameBoardArray,
         playerTurn: 'black',
@@ -71,8 +73,10 @@ function startFirebaseLobby(){
     databaseLobby.on("value", gotData)
 }
 function joinFirebaseLobby(){
+    var lobbyName = $('.joinlobbyinput').val();
+    hideLobbyModal();
     myPlayerColor = 'white';
-    databaseLobby = database.ref('temp');
+    databaseLobby = database.ref(lobbyName);
     databaseLobby.on("value", gotData);
     blackTurn = false;
     whiteTurn = true;
@@ -113,8 +117,10 @@ function applyClickHandlers(){
     $(".playagain").on('click', playAgain);
     $(".rules").on('click', showRulesModal);
     $(".rulebook").on('click', hideRulesModal);
-    $(".playonline").on('click', startFirebaseLobby);
-    $('.playlocal').on('click', joinFirebaseLobby)
+    $(".playonline").on('click', showLobbyModal);
+    $('.playlocal').on('click', hideIntroModal);
+    $('.startlobby').on('click', startFirebaseLobby);
+    $('.joinlobby').on('click', joinFirebaseLobby);
 }
 
 // Game Board Functions
@@ -292,7 +298,7 @@ function switchTurns(){
         }
         playerTurn = 'white';
         databaseLobby.update(updatedObj);
-    } else {
+    } else if (playerTurn === 'white'){
         stopTimer();
         var updatedObj = {
             gameArray: gameBoardArray,
@@ -313,8 +319,7 @@ function switchTurns(){
         blackTurn = false;
         whiteTurn = true;
         console.log('black to false white to true')
-    } 
-    if(whiteTurn && playerTurn === null){
+    } else if (whiteTurn && playerTurn === null){
         $('.pointsboard-white').removeClass('chip-hop');
         $('.pointsboard-black').addClass('chip-hop');
         stopTimer();
@@ -418,9 +423,28 @@ function playerWon( player ){
     }
 }
 
+// function hideShowModals(toBeHidden, toBeShown){
+//     var modalRefObj ={
+//         'intro-modal': {
+//             'hide': {'.intro-modal': 'hidden'}
+//         }
+//     }
+// }
+
+function showLobbyModal(){
+    $('.intro-modal').addClass('hidden');
+    $('.lobby-modal').removeClass('displaynone');
+    $('.lobby-modal').addClass('show');
+}
+function hideLobbyModal(){
+    $('.lobby-modal').addClass('hidden');
+    $('.lobby-modal').removeClass('show');
+    $('.modal-background').addClass('hidden2');
+}
+
 function hideIntroModal(){
     $('.intro-modal').addClass('hidden');
-    $('.modal-background').addClass('hidden2');
+    // $('.modal-background').addClass('hidden2');
 }
 function showIntroModal(){
     $('.intro-modal').removeClass('hidden');

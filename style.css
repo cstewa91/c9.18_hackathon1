@@ -292,7 +292,54 @@ html, body{
 .intro-modal div {
     z-index: inherit;;
 }
+.lobby-modal{
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    height: 80%;
+    width: 60%;
+    z-index: 7;
+    opacity: 1;
+    text-align: center;
+}
+.lobbysettings{
+    position: absolute;
+    height: 100%;
+    width: 84%;
+    left: 8%;
+    bottom: 10%;
+    background-image: url(images/lobby-options.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.startlobby{
+    position: absolute;
+    height: 13%;
+    width: 21%;
+    bottom: 7%;
+    left: 17%;
+    z-index: 8;
+    cursor: pointer;
+}
+.joinlobby{
+    position: absolute;
+    height: 13%;
+    width: 21%;
+    bottom: 7%;
+    right: 17%;
+    z-index: 8;
+    cursor: pointer;
+}
+.input-cont{
+    top: 65%;
+    position: relative;
 
+}
+.startlobbyinput, .joinlobbyinput{
+    text-align: center;
+    margin: 0 14%;
+}
 .playonline {
     position: absolute;
     height: 80%;
