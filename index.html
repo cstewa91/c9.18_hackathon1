@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Cabin+Sketch|Lobster|Righteous" rel="stylesheet">
+        <script src="main.js"></script>
+        <title>Reversi</title>
+    </head>
+    <body>
+        <div class = "main-cont">       
+                <div class = 'modal-background displaynone'></div>
+                <div class = 'intro-modal displaynone'>
+                    <h1>Welcome, choose your play option</h1>
+                    <div class="playonline"></div>
+                    <div class="playlocal"></div>
+                </div>
+                <div class="win-modal displaynone">
+                    <div class="trophy"></div>
+                    <h1>Player Won!</h1>
+                    <div class="playagain"></div>
+                </div>
+                <div class="rule-modal displaynone">
+                    <div class="rulebook"><img src="images/rules.png"></div>
+                </div>
+            <div class="reset">
+                <div class="reset-button"></div>
+                <p>Reset</p>
+            </div>
+            <div class="rules">
+                <p>Rules</p>
+            </div>
+            <div class="title-bar">
+            </div>
+                <div class="pointsboard-black">
+                    <div class="pointsB">0</div>
+                </div>
+                <div class = "gameboard"></div>
+                <div class="pointsboard-white">
+                    <div class="pointsW">0</div>
+                </div>
+            <div class="timer">
+                <div class="black-minutes">00</div>
+                <div class="black-seconds">00</div>
+                <div class="white-minutes">00</div>
+                <div class="white-seconds">00</div>
+            </div>
+            <div class="pass">Pass</div>
+        </div>    
+
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCArYmACtukWy_IT7MDbXfkdlLMqc2FDgc",
+        authDomain: "reversi-abc123.firebaseapp.com",
+        databaseURL: "https://reversi-abc123.firebaseio.com",
+        projectId: "reversi-abc123",
+        storageBucket: "reversi-abc123.appspot.com",
+        messagingSenderId: "957372485133"
+    };
+    firebase.initializeApp(config);
+    </script> -->
+    </body>
+</html>

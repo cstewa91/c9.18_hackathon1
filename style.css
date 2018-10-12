@@ -1,0 +1,446 @@
+html, body{
+    margin: 0;
+}
+* {
+    box-sizing: border-box;
+}
+.main-cont {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    background-image: url(images/park.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+
+.title-bar{
+    position: absolute;
+    top: 2%;
+    left: 35%;
+    height: 15%;
+    width: 31%;
+    background-image: url(images/reversi.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    animation: 1s fadein linear 0s 1;
+}
+.gameboard{
+    display: inline-block;
+    height: 60%;
+    width: 40%;
+    position: relative;
+    top: 20%;
+    left: 20%;
+    border: 4px solid rgb(150, 114, 25);
+    background-image: url(images/marble.jpg);
+    font-size: 0;
+    cursor: pointer;
+    opacity: 1;
+    animation: 1s fadein linear 0s 1;
+    box-shadow: 5px 5px 10px rgb(51, 51, 51);
+}
+.gameboard-tile{
+    height: 12.5%;
+    width: 12.5%;
+    position: relative;
+    border: 1px solid goldenrod;
+    display: inline-block;
+}
+.top-div{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+.white-piece{
+    background-image: url(images/whitepiece.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    top: 10%;
+    left: 10%;
+    height: 80%;
+    width: 80%;
+    box-shadow: 1.5px 1.5px 5px rgb(173, 173, 173);
+
+}
+.black-piece{
+    background-image: url(images/blackpiece.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    top: 10%;
+    left: 10%;
+    height: 80%;
+    width: 80%;
+}
+
+/*** Scoreboards ***/
+
+.pointsboard-black{
+    position: relative;
+    display: inline-block;
+    height: 20%;
+    width: 10%;
+    top: 30%;
+    left: 10%;
+    background-image: url(images/blackpiece.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: top;
+    text-align: center;
+}
+.chip-hop{
+    animation: 1s hop linear infinite 0s;
+}
+.pointsboard-white{
+    position: relative;
+    display: inline-block;
+    height: 20%;
+    width: 10%;
+    top: 30%;
+    left: 30%;
+    background-image: url(images/whitepiece.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: top;
+    text-align: center;
+}
+.pointsB{
+    font-size: 6vmin;
+    color: whitesmoke;
+    font-family: 'Righteous', cursive;
+    position: relative;
+    top: 31%;
+}
+
+.pointsW{
+    font-size: 6vmin;
+    color: black;
+    font-family: 'Righteous', cursive;
+    position: relative;
+    top: 30%;
+}
+
+/*** Reset Button ***/
+
+.reset-button{
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    font-size: 2vw;
+    text-align: center;
+    background-image: url(images/reset-button.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: all 1.5s ease;
+}
+.reset{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    height: 4%;
+    width: 8%;
+    cursor: pointer;
+}
+.reset:hover .reset-button{  
+    transform: rotateZ(360deg);
+}
+
+.reset:hover p{
+    color: lightgrey;
+}
+.reset > p {
+    display: inline-block;
+    font-size: 3vmin;
+    position: relative;
+    bottom: 60%;
+    left: 47%;
+    font-family: 'Cabin Sketch', cursive;
+    transition: all 0.5s ease;
+}
+
+/*** Rules ***/
+
+.rules {
+    position: absolute;
+    top: 7%;
+    right: 3%;
+    height: 4%;
+    width: 8%;
+    cursor: pointer;
+}
+.rules > p {
+    display: inline-block;
+    font-size: 3vmin;
+    position: relative;
+    bottom: 55%;
+    left: 47%;
+    font-family: 'Cabin Sketch', cursive;
+    transition: all 0.5s ease;
+}
+.rules:hover p{
+    color: lightgrey;
+}
+/*** Pass Button ***/
+
+.pass{
+    font-size: 4vmin;
+    position: absolute;
+    bottom: 8%;
+    left: 32%;
+    height: 5%;
+    width: 6%;
+    cursor: pointer;
+    font-family: 'Cabin Sketch', cursive;
+}
+
+.pass:hover{
+    color: maroon;
+}
+
+/*** Clock ***/
+
+.timer{
+    position: absolute;
+    bottom: 4%;
+    height: 13%;
+    width: 30%;
+    left: 35%;
+    background-image: url(images/clock.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.white-seconds{
+    position: relative;
+    height: 10%;
+    width: 10%;
+    left: 28%;
+    top: 40%;
+    font-size: 5vmin;
+    font-family: alarm;
+    display: inline-block;
+}
+
+.white-minutes{
+    position: relative;
+    height: 10%;
+    width: 10%;
+    left: 30%;
+    top: 40%;
+    font-size: 5vmin;
+    font-family: alarm;
+    display: inline-block;
+}
+
+.black-seconds{
+    position: relative;
+    height: 10%;
+    width: 10%;
+    left: 28%;
+    top: 40%;
+    font-size: 5vmin;
+    font-family: alarm;
+    display: inline-block;
+}
+
+.black-minutes{
+    position: relative;
+    height: 10%;
+    width: 10%;
+    left: 30%;
+    top: 40%;
+    font-size: 5vmin;
+    font-family: alarm;
+    display: inline-block;
+}
+
+/*** Intro Modal ***/
+
+.modal-background{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: .8;
+    background-color: grey;
+    z-index: 5;
+}
+.intro-modal{
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    height: 80%;
+    width: 60%;
+    z-index: 6;
+    opacity: 1;
+    text-align: center;
+}
+.intro-modal > h1 {
+    font-family: 'Righteous';
+    color: black;
+}
+.intro-modal div {
+    z-index: inherit;;
+}
+
+.playonline {
+    position: absolute;
+    height: 80%;
+    width: 40%;
+    left: 8%;
+    bottom: 10%;
+    background-image: url(images/playonline.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+}
+.playlocal {
+    position: absolute;
+    height: 80%;
+    width: 40%;
+    right: 8%;
+    bottom: 10%;
+    background-image: url(images/playlocal.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+}
+
+/*** Rule Modal ***/
+.rule-modal{
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    height: 80%;
+    width: 60%;
+    z-index: 7;
+    opacity: 1;
+    text-align: center;
+}
+
+.rulebook{
+    height: 100%;
+    width: 100%;
+}
+
+.rulebook img{
+    height: 100%;
+    
+}
+
+/*** Win Modal ***/
+
+.win-modal{
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    height: 80%;
+    width: 80%;
+    z-index: 7;
+    opacity: 1;
+    text-align: center;
+}
+.trophy{
+    position: absolute;
+    height: 70%;
+    left: 8%;
+    width: 60%;
+    bottom: 21%;
+    background-image: url(images/trophy.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.win-modal > h1 {
+    position: absolute;
+    color: whitesmoke;
+    font-family: 'Righteous';
+    bottom: 5%;
+    left: 40%;
+    transform: translateX(-50%);
+    letter-spacing: 20px;
+    font-size: 5vmin;
+}
+.playagain{
+    position: absolute;
+    height: 11%;
+    width: 20%;
+    background-image: url(images/playagain.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+    bottom: -5%;
+    left: 28%;
+}
+.hidden {
+    opacity: 0;
+    animation: .6s fadeout linear 0s 1;
+    z-index: -1;
+}.hidden2 {
+    opacity: 0;
+    animation: .6s fadeout2 linear 0s 1;
+    z-index: -1;
+}
+.show {
+    opacity: 1;
+    animation: .6s fadein linear 0s 1;
+}
+.show2 {
+    opacity: .8;
+    animation: .6s fadein2 linear 0s 1;
+}
+.displaynone{
+    display: none;
+}
+
+/***********Animation***********/
+
+@keyframes hop {
+    0% {top: 30%}
+    25% {top: 27%}
+    50% {top: 30%}
+    75% {top: 29%}
+    100% {top: 30%}
+}
+@keyframes fadeout {
+    from {opacity: 1;
+            z-index: 6}
+    to {opacity: 0;
+            z-index: -1;}
+}
+@keyframes fadeout2 {
+    from {opacity: .8;
+            z-index: 5;}
+    to {opacity: 0;
+            z-index: -1;}
+}
+@keyframes fadein {
+    from {opacity: 0;}
+    to  {opacity: 1;}
+}
+@keyframes fadein2 {
+    from {opacity: 0;}
+    to  {opacity: .8;}
+}
+
+/***********Alarm Font***********/
+
+@font-face {
+    font-family: alarm;
+    src: url(Alarm/DS-DIGII.TTF);
+}
+
+
