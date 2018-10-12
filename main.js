@@ -344,7 +344,7 @@ function showWinModal(){
 }
 
 function showRulesModal(){
-    $('.modal-background').removeClass('hidden2');
+    $('.modal-background').removeClass('hidden2 displaynone');
     $('.rule-modal').removeClass('hidden displaynone');;
     $('.modal-background').addClass('show2');
     $('.rule-modal').addClass('show');
