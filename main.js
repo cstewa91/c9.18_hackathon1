@@ -4,7 +4,8 @@ function initApp(){
     buildGameBoardArray();
     buildGameBoard();
     applyClickHandlers();
-    $('.pointsboard-black').addClass('chip-hop'); 
+    $('.pointsboard-black').addClass('chip-hop');
+    
 }
 
 //*******Globals****//
@@ -39,6 +40,68 @@ var whiteSeconds = 0;
 var whiteMinutes = 0;
 var whitePassFlag = false;
 var blackPassFlag = false;
+var myPlayerColor = null;
+var playerTurn = null;
+
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyCArYmACtukWy_IT7MDbXfkdlLMqc2FDgc",
+    authDomain: "reversi-abc123.firebaseapp.com",
+    databaseURL: "https://reversi-abc123.firebaseio.com",
+    projectId: "reversi-abc123",
+    storageBucket: "reversi-abc123.appspot.com",
+    messagingSenderId: "957372485133"
+};
+firebase.initializeApp(config);
+var database = firebase.database();
+var databaseLobby;
+
+function startFirebaseLobby(){
+    myPlayerColor = 'black';
+    databaseLobby = database.ref('temp');
+    var data = {
+        gameArray: gameBoardArray,
+        playerTurn: 'black',
+        bSec: blackSeconds,
+        bMin: blackMinutes,
+        wSec: whiteSeconds,
+        wMin: whiteMinutes
+    }
+    databaseLobby.set(data);
+    databaseLobby.on("value", gotData)
+}
+function joinFirebaseLobby(){
+    myPlayerColor = 'white';
+    databaseLobby = database.ref('temp');
+    databaseLobby.on("value", gotData);
+    blackTurn = false;
+    whiteTurn = true;
+}
+function gotData(data){
+    var dataObj = data.val();
+    gameBoardArray = dataObj.gameArray;
+    playerTurn = dataObj.playerTurn;
+    stopTimer();
+    blackSeconds = dataObj.bSec;
+    blackMinutes = dataObj.bMin;
+    whiteSeconds = dataObj.wSec;
+    whiteMinutes = dataObj.wMin;
+    rebuildGameBoard();
+    console.log('myPlayerColor:', myPlayerColor, 'playerTurn:', playerTurn)
+    if(playerTurn === 'black'){
+        startBlackTimer();
+        blackTurn = true;
+        whiteTurn = false;
+        $('.pointsboard-white').removeClass('chip-hop');
+        $('.pointsboard-black').addClass('chip-hop');
+    } else {
+        startWhiteTimer();
+        blackTurn = false;
+        whiteTurn = true;
+        $('.pointsboard-black').removeClass('chip-hop');
+        $('.pointsboard-white').addClass('chip-hop');
+    }
+}
 
 function applyClickHandlers(){
     $(".gameboard").on('click', '.gameboard-tile', handleBoardClick);
@@ -50,6 +113,8 @@ function applyClickHandlers(){
     $(".playagain").on('click', playAgain);
     $(".rules").on('click', showRulesModal);
     $(".rulebook").on('click', hideRulesModal);
+    $(".playonline").on('click', startFirebaseLobby);
+    $('.playlocal').on('click', joinFirebaseLobby)
 }
 
 // Game Board Functions
@@ -95,9 +160,8 @@ function resetBoard(){
     directionToCheck = null;
     hasTimerStarted = false;
     turnTrackerObj = {};
-    $('.gameboard').empty();
     buildGameBoardArray();
-    buildGameBoard();
+    rebuildGameBoard();
     stopTimer();
     $('.pointsboard-white').removeClass('chip-hop');
     $('.pointsboard-black').addClass('chip-hop');
@@ -114,6 +178,10 @@ function resetBoard(){
 }
 
 function handleBoardClick(){
+    if(myPlayerColor !== playerTurn){
+        console.log('not your turn')
+        return;
+    }
     if(blackTurn){
         currentColor = 'b';   
     } else{
@@ -199,6 +267,9 @@ function changePieces(direction){
     }
     whitePassFlag = false;
     blackPassFlag = false;
+    rebuildGameBoard();
+}
+function rebuildGameBoard(){
     $('.gameboard').empty();
     buildGameBoard();
 }
@@ -209,23 +280,52 @@ function switchTurns(){
     var tallyWhite = parseInt(countsArray[0]);
     var tallyBlack = parseInt(countsArray[1]);
     checkWinCondition(tallyWhite, tallyBlack);
-    if(blackTurn){
+    if(playerTurn === 'black'){
+        stopTimer();
+        var updatedObj = {
+            gameArray: gameBoardArray,
+            playerTurn: 'white',
+            bSec: blackSeconds,
+            bMin: blackMinutes,
+            wSec: whiteSeconds,
+            wMin: whiteMinutes
+        }
+        playerTurn = 'white';
+        databaseLobby.update(updatedObj);
+    } else {
+        stopTimer();
+        var updatedObj = {
+            gameArray: gameBoardArray,
+            playerTurn: 'black',
+            bSec: blackSeconds,
+            bMin: blackMinutes,
+            wSec: whiteSeconds,
+            wMin: whiteMinutes
+        }
+        playerTurn = 'black';
+        databaseLobby.update(updatedObj);
+    }
+    if(blackTurn && playerTurn === null){
         $('.pointsboard-black').removeClass('chip-hop');
         $('.pointsboard-white').addClass('chip-hop');
         stopTimer();
         startWhiteTimer();
         blackTurn = false;
         whiteTurn = true;
-    } else {
+        console.log('black to false white to true')
+    } 
+    if(whiteTurn && playerTurn === null){
         $('.pointsboard-white').removeClass('chip-hop');
         $('.pointsboard-black').addClass('chip-hop');
         stopTimer();
         startBlackTimer();
         blackTurn = true;
         whiteTurn = false;
+        console.log('black to true white to false')
     }
     turnTrackerObj = {};
     moveCounterObj = {};
+    console.log('switch myPlayerColor:', myPlayerColor, 'playerTurn:', playerTurn)
 }
 
 function startBlackTimer(){
