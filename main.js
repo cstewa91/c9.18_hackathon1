@@ -3,8 +3,7 @@ $(document).ready(initApp);
 function initApp(){
     buildGameBoardArray();
     buildGameBoard();
-    applyClickHandlers();
-    
+    applyClickHandlers();   
 }
 
 //*******Globals****//
@@ -13,7 +12,6 @@ var destRow;
 var destCol;
 var timer;
 var blackTurn = true;
-var whiteTurn = false;
 var currentColor;
 var checkAdjacentObj = {
     'up': [-1, 0],
@@ -30,9 +28,8 @@ var oppPieceObj = {
     'w': 'b'
 }
 var moveCounterObj = {};
-var turnTrackerObj = {}
-var directionToCheck = null;
-var hasTimerStarted = false;
+var turnTrackerObj = {};
+var lobbyName;
 var blackSeconds = 0;
 var blackMinutes = 0;
 var whiteSeconds = 0;
@@ -41,6 +38,20 @@ var whitePassFlag = false;
 var blackPassFlag = false;
 var myPlayerColor = null;
 var playerTurn = null;
+var winningPlayer = 'none';
+
+function applyClickHandlers(){
+    $(".gameboard").on('click', '.gameboard-tile', handleBoardClick);
+    $(".reset").on('click', resetBoard);
+    $(".pass").on('click', checkDoublePass);
+    $(".playagain").on('click', playAgain);
+    $(".rules").on('click', showRulesModal);
+    $(".rulebook").on('click', hideRulesModal);
+    $(".playonline").on('click', showLobbyModal);
+    $('.playlocal').on('click', hideIntroModal);
+    $('.startlobby').on('click', startFirebaseLobby);
+    $('.joinlobby').on('click', joinFirebaseLobby);
+}
 
 // Initialize Firebase
 var config = {
@@ -57,7 +68,7 @@ var databaseLobby;
 
 function startFirebaseLobby(){
     $('.pointsboard-black').addClass('chip-hop');
-    var lobbyName = $('.startlobbyinput').val();
+    lobbyName = $('.startlobbyinput').val();
     hideLobbyModal();
     myPlayerColor = 'black';
     databaseLobby = database.ref(lobbyName);
@@ -67,11 +78,30 @@ function startFirebaseLobby(){
         bSec: blackSeconds,
         bMin: blackMinutes,
         wSec: whiteSeconds,
-        wMin: whiteMinutes
+        wMin: whiteMinutes,
+        bPass: false,
+        wPass: false,
+        winner: 'none'
     }
     databaseLobby.set(data);
     databaseLobby.on("value", gotData)
 }
+
+function restartFirebaseLobby(){
+    var data = {
+        gameArray: gameBoardArray,
+        playerTurn: 'black',
+        bSec: blackSeconds,
+        bMin: blackMinutes,
+        wSec: whiteSeconds,
+        wMin: whiteMinutes,
+        bPass: false,
+        wPass: false,
+        winner: 'none'
+    }
+    databaseLobby.set(data);
+}
+
 function joinFirebaseLobby(){
     $('.pointsboard-black').addClass('chip-hop');
     var lobbyName = $('.joinlobbyinput').val();
@@ -80,7 +110,9 @@ function joinFirebaseLobby(){
     databaseLobby = database.ref(lobbyName);
     databaseLobby.on("value", gotData);
     blackTurn = false;
-    whiteTurn = true;
+}
+function error(err){
+    console.log(err)
 }
 function gotData(data){
     var dataObj = data.val();
@@ -91,35 +123,26 @@ function gotData(data){
     blackMinutes = dataObj.bMin;
     whiteSeconds = dataObj.wSec;
     whiteMinutes = dataObj.wMin;
-    rebuildGameBoard();
-    console.log('myPlayerColor:', myPlayerColor, 'playerTurn:', playerTurn)
+    blackPassFlag = dataObj.bPass;
+    whitePassFlag = dataObj.wPass;
+    winningPlayer = dataObj.winner;
+    if(winningPlayer !== 'none'){
+        playerWon(winningPlayer);
+        return;
+    } else{
+        rebuildGameBoard(); 
+    }
     if(playerTurn === 'black'){
         startBlackTimer();
         blackTurn = true;
-        whiteTurn = false;
         $('.pointsboard-white').removeClass('chip-hop');
         $('.pointsboard-black').addClass('chip-hop');
     } else {
         startWhiteTimer();
         blackTurn = false;
-        whiteTurn = true;
         $('.pointsboard-black').removeClass('chip-hop');
         $('.pointsboard-white').addClass('chip-hop');
     }
-}
-
-function applyClickHandlers(){
-    $(".gameboard").on('click', '.gameboard-tile', handleBoardClick);
-    $(".reset").on('click', resetBoard);
-    $(".pass").on('click', switchTurns);
-    $(".pass").on('click', checkDoublePass);
-    $(".playagain").on('click', playAgain);
-    $(".rules").on('click', showRulesModal);
-    $(".rulebook").on('click', hideRulesModal);
-    $(".playonline").on('click', showLobbyModal);
-    $('.playlocal').on('click', hideIntroModal);
-    $('.startlobby').on('click', startFirebaseLobby);
-    $('.joinlobby').on('click', joinFirebaseLobby);
 }
 
 // Game Board Functions
@@ -137,49 +160,29 @@ function buildGameBoardArray(){
 }
 function buildGameBoard(){
     var gameArea = $('.gameboard');
+    var tallyWhite = 0;
+    var tallyBlack = 0;
     for(var i = 0; i< gameBoardArray.length; i++){
         for(var j = 0; j< gameBoardArray.length; j++){
             if(gameBoardArray[i][j] === ''){
-                var boardDiv = $('<div>').addClass('gameboard-tile').attr({'row': i,'col': j});
+                var boardDiv = $('<div>').addClass('gameboard-tile');
                 var topDiv = $('<div>').addClass('top-div').attr({'row': i,'col': j});
                 boardDiv.append(topDiv);
             } else if(gameBoardArray[i][j] === 'w'){
-                var boardDiv = $('<div>').addClass('gameboard-tile').attr({'row': i,'col': j});
+                tallyWhite++;
+                var boardDiv = $('<div>').addClass('gameboard-tile');
                 var topDiv = $('<div>').addClass('top-div white-piece').attr({'row': i,'col': j});
                 boardDiv.append(topDiv);
             } else {
-                var boardDiv = $('<div>').addClass('gameboard-tile').attr({'row': i,'col': j});
+                tallyBlack++
+                var boardDiv = $('<div>').addClass('gameboard-tile');
                 var topDiv = $('<div>').addClass('top-div black-piece').attr({'row': i,'col': j});
                 boardDiv.append(topDiv);
             }
             gameArea.append(boardDiv);
         }
     }
-    keepScore();
-}
-
-function resetBoard(){
-    blackTurn = true;
-    whiteTurn = false;
-    moveCounterObj = {};
-    directionToCheck = null;
-    hasTimerStarted = false;
-    turnTrackerObj = {};
-    buildGameBoardArray();
-    rebuildGameBoard();
-    stopTimer();
-    $('.pointsboard-white').removeClass('chip-hop');
-    $('.pointsboard-black').addClass('chip-hop');
-    blackSeconds = 0;
-    blackMinutes = 0;
-    whiteSeconds = 0;
-    whiteMinutes = 0;
-    $('.white-seconds').text('0' + whiteSeconds)
-    $('.white-minutes').text('0' + whiteMinutes)
-    $('.black-seconds').text('0' + blackSeconds)
-    $('.black-minutes').text('0' + blackMinutes)
-    whitePassFlag = false;
-    blackPassFlag = false;
+    updateScore(tallyWhite, tallyBlack);
 }
 
 function handleBoardClick(){
@@ -213,17 +216,12 @@ function checkAdjacentTiles(){
             continue;
         }
         if(gameBoardArray[adjTileRow][adjTileCol] === oppPieceObj[currentColor]){
-            directionToCheck = key;
-        }
-        if(directionToCheck){
-            directionCheck(directionToCheck, adjTileRow, adjTileCol);
-        }
-        directionToCheck = null;    
-    }
-    
+            checkForValidMove(key, adjTileRow, adjTileCol);
+        }   
+    }  
 }
 
-function directionCheck(direction, adjTileRow, adjTileCol){
+function checkForValidMove(direction, adjTileRow, adjTileCol){
     var nextTileRow = adjTileRow + checkAdjacentObj[direction][0];
     var nextTileCol = adjTileCol + checkAdjacentObj[direction][1];
     if(nextTileRow > 7 || nextTileRow < 0){
@@ -250,7 +248,7 @@ function directionCheck(direction, adjTileRow, adjTileCol){
         } else {
             moveCounterObj[direction] += 1;
         }
-        directionCheck(direction, nextTileRow, nextTileCol);
+        checkForValidMove(direction, nextTileRow, nextTileCol);
         return;
     }
 }
@@ -267,8 +265,7 @@ function changePieces(direction){
     for(var i = 0; i < moveCounterObj[direction]; i++){
         changedRow = changedRow + checkAdjacentObj[direction][0];
         changedCol = changedCol + checkAdjacentObj[direction][1];
-        gameBoardArray[changedRow][changedCol] = currentColor;
-        
+        gameBoardArray[changedRow][changedCol] = currentColor;   
     }
     whitePassFlag = false;
     blackPassFlag = false;
@@ -280,11 +277,6 @@ function rebuildGameBoard(){
 }
 
 function switchTurns(){
-    var counts = keepScore();
-    var countsArray = counts.split(' ');
-    var tallyWhite = parseInt(countsArray[0]);
-    var tallyBlack = parseInt(countsArray[1]);
-    checkWinCondition(tallyWhite, tallyBlack);
     if(playerTurn === 'black'){
         stopTimer();
         var updatedObj = {
@@ -293,7 +285,10 @@ function switchTurns(){
             bSec: blackSeconds,
             bMin: blackMinutes,
             wSec: whiteSeconds,
-            wMin: whiteMinutes
+            wMin: whiteMinutes,
+            bPass: blackPassFlag,
+            wPass: whitePassFlag,
+            winner: winningPlayer
         }
         playerTurn = 'white';
         databaseLobby.update(updatedObj);
@@ -305,7 +300,10 @@ function switchTurns(){
             bSec: blackSeconds,
             bMin: blackMinutes,
             wSec: whiteSeconds,
-            wMin: whiteMinutes
+            wMin: whiteMinutes,
+            bPass: blackPassFlag,
+            wPass: whitePassFlag,
+            winner: winningPlayer
         }
         playerTurn = 'black';
         databaseLobby.update(updatedObj);
@@ -316,22 +314,110 @@ function switchTurns(){
         stopTimer();
         startWhiteTimer();
         blackTurn = false;
-        whiteTurn = true;
-        console.log('black to false white to true')
-    } else if (whiteTurn && playerTurn === null){
+    } else if (!blackTurn && playerTurn === null){
         $('.pointsboard-white').removeClass('chip-hop');
         $('.pointsboard-black').addClass('chip-hop');
         stopTimer();
         startBlackTimer();
         blackTurn = true;
-        whiteTurn = false;
-        console.log('black to true white to false')
     }
     turnTrackerObj = {};
     moveCounterObj = {};
-    console.log('switch myPlayerColor:', myPlayerColor, 'playerTurn:', playerTurn)
 }
 
+function resetBoard(){
+    blackTurn = true;
+    moveCounterObj = {};
+    hasTimerStarted = false;
+    turnTrackerObj = {};
+    stopTimer();
+    $('.pointsboard-white').removeClass('chip-hop');
+    $('.pointsboard-black').addClass('chip-hop');
+    blackSeconds = 0;
+    blackMinutes = 0;
+    whiteSeconds = 0;
+    whiteMinutes = 0;
+    $('.white-seconds').text('0' + whiteSeconds)
+    $('.white-minutes').text('0' + whiteMinutes)
+    $('.black-seconds').text('0' + blackSeconds)
+    $('.black-minutes').text('0' + blackMinutes)
+    whitePassFlag = false;
+    blackPassFlag = false;
+    winningPlayer = 'none';
+    buildGameBoardArray();
+    rebuildGameBoard();
+    if(myPlayerColor !== null){
+        restartFirebaseLobby();
+    }
+}
+
+// Score Board
+function updateScore(tallyWhite, tallyBlack){
+    $('.pointsW').text(tallyWhite);
+    $('.pointsB').text(tallyBlack);
+    if(tallyBlack + tallyWhite > 4){
+        checkWinCondition(tallyWhite, tallyBlack);
+    }
+}
+
+function checkWinCondition(white, black){
+    var totalTally = white + black;
+    if(totalTally === 64 || winningPlayer !== 'none' || (whitePassFlag === true && blackPassFlag === true)){
+        stopTimer();
+        if(white > black){
+            playerWon('White');
+            winningPlayer = 'White';
+            return;
+        }else if (white < black){
+            playerWon('Black');
+            winningPlayer = 'Black';
+            return;
+        }
+        if(white === black && totalTally > 4){
+            playerWon('Tie');
+            winningPlayer = 'Tie'
+            return;
+        }
+        switchTurns();
+    }
+}
+
+function playerWon( player ){
+    if(player === 'Tie'){
+        $('.win-modal > h1').text("It's a " + player);
+        showWinModal();
+    }else{
+        $('.win-modal > h1').text(player + ' Wins!');
+        showWinModal();
+    }
+}
+
+function checkDoublePass(){
+    if(playerTurn !== myPlayerColor){
+        return;
+    }
+    
+    if(whitePassFlag === false && blackPassFlag === false){
+        if(blackTurn){
+            blackPassFlag = true;
+        }else{
+            whitePassFlag = true;
+        }
+    }else if(whitePassFlag === true && blackPassFlag === false){
+        blackPassFlag = true;
+        rebuildGameBoard();
+    }else if(blackPassFlag === true && whitePassFlag === false){
+        whitePassFlag = true;
+        rebuildGameBoard();
+    }
+    switchTurns();
+}
+
+function playAgain(){
+    console.log('play again')
+    hideWinModal(); 
+    resetBoard();
+}
 function startBlackTimer(){
     timer = setInterval(function(){
         if(blackSeconds < 59){
@@ -379,56 +465,6 @@ function startWhiteTimer(){
 function stopTimer(){
     clearInterval(timer);
 }
-// Score Board
-function keepScore(){
-    var tallyWhite = null;
-    var tallyBlack = null;
-    for( var i=0;i<gameBoardArray.length; i++){
-        for(var j=0;j<gameBoardArray[i].length;j++){
-            if (gameBoardArray[i][j] === 'b'){
-                tallyBlack++;
-            } else if (gameBoardArray[i][j] === 'w'){
-                tallyWhite++;
-            }
-        }
-    }
-    $('.pointsW').text(tallyWhite);
-    $('.pointsB').text(tallyBlack);
-    return tallyWhite + ' ' + tallyBlack;
-}
-
-function checkWinCondition(white, black){
-    var totalTally = white + black
-    if(totalTally === 64 || (whitePassFlag === true && blackPassFlag === true)){
-        if(white > black){
-            playerWon('White')
-            stopTimer();
-        }else if(black > white){
-            playerWon('Black')
-            stopTimer();
-        }else{
-            playerWon('Tie')
-        }
-    }
-}
-
-function playerWon( player ){
-    if(player === 'White' || player === 'Black'){
-        $('.win-modal > h1').text(player + ' Wins!');
-        showWinModal();
-    }else{
-        $('.win-modal > h1').text("It's a " + player);
-        showWinModal();
-    }
-}
-
-// function hideShowModals(toBeHidden, toBeShown){
-//     var modalRefObj ={
-//         'intro-modal': {
-//             'hide': {'.intro-modal': 'hidden'}
-//         }
-//     }
-// }
 
 function showLobbyModal(){
     goToLobbyModal();
@@ -439,7 +475,7 @@ function showLobbyModal(){
 function hideLobbyModal(){
     $('.lobby-modal').addClass('hidden');
     $('.lobby-modal').removeClass('show');
-    $('.modal-background').addClass('hidden2');
+    $('.modal-background').addClass('hiddenbackground');
 }
 
 function goToLobbyModal(){
@@ -448,65 +484,39 @@ function goToLobbyModal(){
 function hideIntroModal(){
     $('.pointsboard-black').addClass('chip-hop');
     $('.intro-modal').addClass('hidden');
-    $('.modal-background').addClass('hidden2');
+    $('.modal-background').addClass('hiddenbackground');
 }
 function showIntroModal(){
     $('.intro-modal').removeClass('hidden');
-    $('.modal-background').removeClass('hidden2 displaynone');
+    $('.modal-background').removeClass('hiddenbackground displaynone');
     $('.intro-modal').addClass('show');
-    $('.modal-background').addClass('show2');
+    $('.modal-background').addClass('showbackground');
 }
 
 function hideWinModal(){
     $('.win-modal').removeClass('show');
-    $('.modal-background').removeClass('show2');
-    $('.modal-background').addClass('hidden2');
+    $('.modal-background').removeClass('showbackground');
+    $('.modal-background').addClass('hiddenbackground');
     $('.win-modal').addClass('hidden');
 }
 
 function showWinModal(){
-    $('.modal-background').removeClass('hidden2 displaynone');
+    $('.modal-background').removeClass('hiddenbackground displaynone');
     $('.win-modal').removeClass('hidden displaynone')
-    $('.modal-background').addClass('show2');
+    $('.modal-background').addClass('showbackground');
     $('.win-modal').addClass('show');
 }
 
 function showRulesModal(){
-    $('.modal-background').removeClass('hidden2 displaynone');
+    $('.modal-background').removeClass('hiddenbackground displaynone');
     $('.rule-modal').removeClass('hidden displaynone');;
-    $('.modal-background').addClass('show2');
+    $('.modal-background').addClass('showbackground');
     $('.rule-modal').addClass('show');
 }
 
 function hideRulesModal(){
     $('.rule-modal').removeClass('show');
-    $('.modal-background').removeClass('show2');
-    $('.modal-background').addClass('hidden2');
+    $('.modal-background').removeClass('showbackground');
+    $('.modal-background').addClass('hiddenbackground');
     $('.rule-modal').addClass('hidden');
-}
-
-function checkDoublePass(){
-    var counts = keepScore();
-    var countsArray = counts.split(' ');
-    var tallyWhite = parseInt(countsArray[0]);
-    var tallyBlack = parseInt(countsArray[1]);
-
-    if(whitePassFlag === false && blackPassFlag === false){
-        if(blackTurn){
-            whitePassFlag = true;
-        }else{
-            blackPassFlag = true;
-        }
-    }else if(whitePassFlag === true && blackPassFlag === false){
-        blackPassFlag = true;
-        checkWinCondition(tallyWhite, tallyBlack);
-    }else if(blackPassFlag === true && whitePassFlag === false){
-        whitePassFlag = true;
-        checkWinCondition(tallyWhite, tallyBlack);
-    }
-}
-
-function playAgain(){
-    hideWinModal(); 
-    resetBoard();
 }
