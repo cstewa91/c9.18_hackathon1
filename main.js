@@ -240,21 +240,16 @@ function checkForValidMove(direction, adjTileRow, adjTileCol){
     if(gameBoardArray[nextTileRow][nextTileCol] === ''){
         return;
     }
+    if(moveCounterObj[direction] === undefined){
+        moveCounterObj[direction] = 1;
+    } else {
+        moveCounterObj[direction] += 1;
+    }
     if(gameBoardArray[nextTileRow][nextTileCol] === currentColor){
-        if(moveCounterObj[direction] === undefined){
-            moveCounterObj[direction] = 1;
-        } else {
-            moveCounterObj[direction] += 1;
-        }
         changePieces(direction);
         return;
     }
     if(gameBoardArray[nextTileRow][nextTileCol] === oppPieceObj[currentColor]){
-        if(moveCounterObj[direction] === undefined){
-            moveCounterObj[direction] = 1;
-        } else {
-            moveCounterObj[direction] += 1;
-        }
         checkForValidMove(direction, nextTileRow, nextTileCol);
         return;
     }
@@ -272,6 +267,7 @@ function changePieces(direction){
     for(var i = 0; i < moveCounterObj[direction]; i++){
         changedRow = changedRow + checkAdjacentObj[direction][0];
         changedCol = changedCol + checkAdjacentObj[direction][1];
+        console.log(direction, moveCounterObj[direction], 'clicked cord', destRow + ' ' + destCol, 'changed', changedRow + '' + changedCol, gameBoardArray)
         gameBoardArray[changedRow][changedCol] = currentColor;   
     }
     whitePassFlag = false;
@@ -284,7 +280,7 @@ function rebuildGameBoard(){
 }
 
 function switchTurns(){
-    if(playerTurn === 'black'){
+    if(playerTurn === 'black'){ //if else for play online
         stopTimer();
         var updatedObj = {
             gameArray: gameBoardArray,
@@ -315,7 +311,7 @@ function switchTurns(){
         playerTurn = 'black';
         databaseLobby.update(updatedObj);
     }
-    if(blackTurn && playerTurn === null){
+    if(blackTurn && playerTurn === null){ //if else for play local
         $('.pointsboard-black').removeClass('chip-hop');
         $('.pointsboard-white').addClass('chip-hop');
         stopTimer();
