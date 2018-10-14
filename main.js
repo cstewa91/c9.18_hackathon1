@@ -246,7 +246,7 @@ function checkForValidMove(direction, adjTileRow, adjTileCol){
         moveCounterObj[direction] += 1;
     }
     if(gameBoardArray[nextTileRow][nextTileCol] === currentColor){
-        changePieces(direction);
+        changePieces(direction, moveCounterObj[direction]);
         return;
     }
     if(gameBoardArray[nextTileRow][nextTileCol] === oppPieceObj[currentColor]){
@@ -255,7 +255,7 @@ function checkForValidMove(direction, adjTileRow, adjTileCol){
     }
 }
 
-function changePieces(direction){
+function changePieces(direction, count){
     if(turnTrackerObj[currentColor] === undefined){
         turnTrackerObj[currentColor] = 1;
     } else{
@@ -264,10 +264,10 @@ function changePieces(direction){
     var changedRow = destRow;
     var changedCol = destCol;
     gameBoardArray[destRow][destCol] = currentColor;
-    for(var i = 0; i < moveCounterObj[direction]; i++){
+    for(var i = 0; i < count; i++){
         changedRow = changedRow + checkAdjacentObj[direction][0];
         changedCol = changedCol + checkAdjacentObj[direction][1];
-        console.log(direction, moveCounterObj[direction], 'clicked cord', destRow + ' ' + destCol, 'changed', changedRow + '' + changedCol, gameBoardArray)
+        console.log(direction, count, 'clicked cord', destRow + ' ' + destCol, 'changed', changedRow + '' + changedCol, gameBoardArray)
         gameBoardArray[changedRow][changedCol] = currentColor;   
     }
     whitePassFlag = false;
@@ -311,6 +311,8 @@ function switchTurns(){
         playerTurn = 'black';
         databaseLobby.update(updatedObj);
     }
+    turnTrackerObj = {};
+    moveCounterObj = {};
     if(blackTurn && playerTurn === null){ //if else for play local
         $('.pointsboard-black').removeClass('chip-hop');
         $('.pointsboard-white').addClass('chip-hop');
@@ -323,9 +325,7 @@ function switchTurns(){
         stopTimer();
         startBlackTimer();
         blackTurn = true;
-    }
-    turnTrackerObj = {};
-    moveCounterObj = {};
+    }  
 }
 
 function resetBoard(){
@@ -381,6 +381,7 @@ function checkWinCondition(white, black){
             winningPlayer = 'Tie'
             return;
         }
+        console.log('check win switchturns')
         switchTurns();
     }
 }
