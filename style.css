@@ -369,7 +369,8 @@ html, body{
 }
 .startlobbyinput, .joinlobbyinput{
     text-align: center;
-    margin: 0 14%;
+    margin: 0 9%;
+    font-size: 18px;
 }
 .playonline {
     position: absolute;

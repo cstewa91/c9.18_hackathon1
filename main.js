@@ -67,8 +67,12 @@ var database = firebase.database();
 var databaseLobby;
 
 function startFirebaseLobby(){
-    $('.pointsboard-black').addClass('chip-hop');
     lobbyName = $('.startlobbyinput').val();
+    if(lobbyName === ''){
+        $('.startlobbyinput').css('box-shadow', '0px 2px 0px #ff0000')
+        return;
+    }
+    $('.pointsboard-black').addClass('chip-hop');
     hideLobbyModal();
     myPlayerColor = 'black';
     databaseLobby = database.ref(lobbyName);
@@ -103,13 +107,16 @@ function restartFirebaseLobby(){
 }
 
 function joinFirebaseLobby(){
-    $('.pointsboard-black').addClass('chip-hop');
     var lobbyName = $('.joinlobbyinput').val();
+    if(lobbyName === ''){
+        $('.joinlobbyinput').css('box-shadow', '0px 2px 0px #ff0000')
+        return;
+    }
+    $('.pointsboard-black').addClass('chip-hop');
     hideLobbyModal();
     myPlayerColor = 'white';
     databaseLobby = database.ref(lobbyName);
     databaseLobby.on("value", gotData);
-    blackTurn = false;
 }
 function error(err){
     console.log(err)
