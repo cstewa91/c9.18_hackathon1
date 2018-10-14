@@ -4,19 +4,31 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
         <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Cabin+Sketch|Lobster|Righteous" rel="stylesheet">
+        
         <script src="main.js"></script>
         <title>Reversi</title>
     </head>
     <body>
         <div class = "main-cont">       
-                <div class = 'modal-background displaynone'></div>
-                <div class = 'intro-modal displaynone'>
+                <div class = 'modal-background '></div>
+                <div class = 'intro-modal'>
                     <h1>Welcome, choose your play option</h1>
                     <div class="playonline"></div>
                     <div class="playlocal"></div>
+                </div>
+                <div class = 'lobby-modal displaynone'>
+                    <div class = 'lobbysettings'>
+                        <div class = 'input-cont'>
+                            <input class = 'startlobbyinput' placeholder = 'Type Lobby Name' type="text" name="startlobby">
+                            <input class = 'joinlobbyinput' placeholder = 'Type Lobby Name' type="text" name="joinlobby">
+                        </div>
+                        <div class = 'startlobby'></div>
+                        <div class = 'joinlobby'></div>
+                    </div>
                 </div>
                 <div class="win-modal displaynone">
                     <div class="trophy"></div>
@@ -31,7 +43,7 @@
                 <p>Reset</p>
             </div>
             <div class="rules">
-                <p>Rules</p>
+                <span class = 'questionmark'>?</span><p>Rules</p>
             </div>
             <div class="title-bar">
             </div>
@@ -51,19 +63,5 @@
             <div class="pass">Pass</div>
         </div>    
 
-    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
-    
-    <script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyCArYmACtukWy_IT7MDbXfkdlLMqc2FDgc",
-        authDomain: "reversi-abc123.firebaseapp.com",
-        databaseURL: "https://reversi-abc123.firebaseio.com",
-        projectId: "reversi-abc123",
-        storageBucket: "reversi-abc123.appspot.com",
-        messagingSenderId: "957372485133"
-    };
-    firebase.initializeApp(config);
-    </script> -->
     </body>
 </html>
