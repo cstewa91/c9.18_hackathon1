@@ -246,7 +246,7 @@ function checkForValidMove(direction, adjTileRow, adjTileCol){
         } else {
             moveCounterObj[direction] += 1;
         }
-        changePieces(direction, nextTileRow, nextTileCol);
+        changePieces(direction);
         return;
     }
     if(gameBoardArray[nextTileRow][nextTileCol] === oppPieceObj[currentColor]){
