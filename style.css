@@ -312,6 +312,29 @@ html, body{
     opacity: 1;
     text-align: center;
 }
+.play-options{
+    position: absolute;
+    height: 60%;
+    width: 100%;
+    background-image: url(images/play-options.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.playonline {
+    position: absolute;
+    height: 100%;
+    width: 37%;
+    left: 12%;
+    cursor: pointer;
+}
+.playlocal {
+    position: absolute;
+    height: 100%;
+    width: 37%;
+    left: 51%;
+    cursor: pointer;
+}
 .intro-modal > h1 {
     font-family: 'Righteous';
     color: white;
@@ -335,10 +358,10 @@ html, body{
 }
 .lobbysettings{
     position: absolute;
-    height: 100%;
+    height: 90%;
     width: 84%;
     left: 8.3%;
-    bottom: 10%;
+    bottom: 18%;
     background-image: url(images/lobby-options.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -372,30 +395,6 @@ html, body{
     text-align: center;
     margin: 0 9%;
     font-size: 18px;
-}
-.playonline {
-    position: absolute;
-    height: 71%;
-    width: 40%;
-    left: 11%;
-    bottom: 10%;
-    background-image: url(images/playonline.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    cursor: pointer;
-}
-.playlocal {
-    position: absolute;
-    height: 71%;
-    width: 40%;
-    left: 50%;
-    bottom: 10%;
-    background-image: url(images/playlocal.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    cursor: pointer;
 }
 
 /*** Rule Modal ***/
