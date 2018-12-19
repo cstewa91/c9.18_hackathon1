@@ -517,11 +517,106 @@ html, body{
     to  {opacity: .8;}
 }
 
-/***********Alarm Font***********/
+/****** Alarm Font ******/
 
 @font-face {
     font-family: alarm;
     src: url(Alarm/DS-DIGII.TTF);
 }
 
+/****** Media Queries ******/
 
+@media (max-width: 480px) and (orientation: landscape) {
+
+
+.intro-modal {
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    height: 100%;
+    width: 60%;
+}
+
+.lobbysettings {
+    position: absolute;
+    height: 93%;
+    width: 98%;
+    left: 1.3%;
+    bottom: 13%;
+    background-image: url(images/lobby-options.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.startlobbyinput, .joinlobbyinput {
+    text-align: center;
+    margin: 0 13px;
+    font-size: 0.5rem;
+}
+
+.gameboard {
+    height: 38vw;
+    width: 38vw;
+    top: 20%;
+    left: 20%;
+}
+
+.pointsboard-white {
+    top: 30%;
+    left: 30%;
+}
+
+.pointsW {
+    top: 23%;
+}
+
+.pointsB {
+    top: 23%;
+}
+
+/* Clock */
+
+.black-minutes {
+    height: 10%;
+    width: 10%;
+    left: 22%;
+    top: 38%;
+}
+
+.black-seconds {
+    height: 10%;
+    width: 10%;
+    left: 21%;
+    top: 38%;
+}
+
+.white-minutes {
+    height: 10%;
+    width: 10%;
+    left: 28%;
+    top: 38%;
+}
+
+.white-seconds {
+    height: 10%;
+    width: 10%;
+    left: 27%;
+    top: 38%;
+}
+
+/* Rule & Win Modals */
+
+.rule-modal {
+    top: 10%;
+    left: 16%;
+    height: 80%;
+    width: 60%;
+}
+
+.win-modal > h1 {
+    font-size: 5vmin;
+    width: 100%;
+}
+
+}
