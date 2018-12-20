@@ -531,7 +531,7 @@ html, body{
 
 
 @media (min-width: 320px) and (min-height: 480px) and (orientation: portrait) {
-    /* iPhone 4 */
+                            /* iPhone 4 */
 
     .intro-modal {
         position: absolute;
@@ -891,7 +891,7 @@ html, body{
 }
 
 @media (min-width: 320px) and (min-height: 568px) and (orientation: portrait) {
-    /* iPhone 5/SE */
+                            /* iPhone 5/SE */
 
     .intro-modal {
         position: absolute;
@@ -1223,6 +1223,238 @@ html, body{
     }
     
     }
+
+@media (min-width: 375px) and (min-height: 667px) and (orientation: portrait) {
+                            /* iPhone 6/7/8 */
+
+    .intro-modal {
+        position: absolute;
+        top: 14%;
+        left: 6%;
+        height: 90vw;
+        width: 90vw;
+    }
+
+    .intro-modal > h1 {
+        top: 13%;
+    }
+
+    .play-options {
+        height: 60%;
+        width: 100%;
+        top: 32%;
+    }
+
+    .lobbysettings {
+        position: absolute;
+        height: 93%;
+        width: 90vw;
+        left: -24.7%;
+        bottom: 13%;
+    }
+
+    .startlobbyinput, .joinlobbyinput {
+        text-align: center;
+        margin: 0 17px;
+        font-size: 0.7rem;
+    }
+
+    .input-cont {
+        top: 58%
+    }
+
+    .gameboard {
+        position: relative;
+        height: 80vw;
+        width: 80vw;
+        top: 18%;
+        left: 10%;
+    }
+
+    .title-bar {
+        top: 4%;
+        left: 32%;
+        height: 15%;
+        width: 40%;
+    }
+
+    .pointsboard-white {
+        position: absolute;
+        display: inline-block;
+        height: 70px;
+        width: 70px;
+        top: 70%;
+        left: 72%;
+    }
+
+    .pointsboard-black {
+        position: absolute;
+        display: inline-block;
+        height: 70px;
+        width: 70px;
+        top: 70%;
+        left: 10%;
+    }
+
+    .pointsW {
+        top: 28%;
+        font-size: 6vmin;
+    }
+
+    .pointsB {
+        top: 28%;
+        font-size: 6vmin;
+    }
+
+    @keyframes hop {
+        0% {top: 70%}
+        25% {top: 67%}
+        50% {top: 70%}
+        75% {top: 69%}
+        100% {top: 70%}
+    }
+
+    .pass {
+        bottom: 8%;
+        left: 8%;
+        height: 5%;
+        width: 6%;
+        font-size: 6vmin;
+    }
+
+    .reset {
+        top: 2%;
+        right: 11%;
+        height: 4%;
+        width: 13%;
+    }
+
+    .reset > p {
+        bottom: 52%;
+        left: 67%;
+        font-size: 5vmin;
+    }
+
+    .rules {
+        top: 2%;
+        left: 3%;
+        height: 4%;
+        width: 8%;
+    }
+
+    .rules > p {
+        bottom: 52%;
+        left: 79%;
+        font-size: 5vmin;
+    }
+
+    .questionmark {
+        font-size: 5.8vmin;
+        bottom: 0%;
+        left: 23%;
+    }
+
+    .rules:hover .questionmark {
+        font-size: 3.1vmin;
+        bottom: 23%;
+        left: 24%;
+        transition: all 0.5s ease;
+        transform: scale(2);
+        color: white;
+    }
+
+    .rules > p {
+        bottom: 59%;
+        left: 79%;
+        font-size: 5vmin;
+    }
+
+/* Clock */
+
+    .timer {
+        bottom: 5%;
+        height: 13%;
+        width: 42%;
+        left: 28%;
+    }
+
+    .black-minutes {
+        font-size: 6vmin;
+        height: 10%;
+        width: 10%;
+        left: 14%;
+        top: 43%;
+    }
+
+    .black-seconds {
+        font-size: 6vmin;
+        height: 10%;
+        width: 10%;
+        left: 16%;
+        top: 43%;
+    }
+
+    .white-minutes {
+        font-size: 6vmin;
+        height: 10%;
+        width: 10%;
+        left: 29%;
+        top: 43%;
+    }
+
+    .white-seconds {
+        font-size: 6vmin;
+        height: 10%;
+        width: 10%;
+        left: 31%;
+        top: 43%;
+    }
+
+    .pass {
+        font-size: 6vmin;
+        bottom: 8%;
+        left: 12%;
+        height: 5%;
+        width: 6%;
+    }
+
+/* Rule & Win Modals */
+
+    .rule-modal {
+        top: 24%;
+        left: 6%;
+        height: 80%;
+        width: 60%;
+    }
+
+    .rulebook {
+        height: 70vw;
+        width: 70vw;
+    }
+
+    .win-modal > h1 {
+        width: 95vw;
+        left: 40%;
+        bottom: 19%;
+        font-size: 8vmin;
+        letter-spacing: 10px;
+    }
+
+    .trophy {
+        height: 70%;
+        left: 8%;
+        width: 60%;
+        bottom: 27%;
+    }
+
+    .playagain {
+        width: 50%;
+        bottom: 5%;
+        left: 12%;
+    }
+
+}
+
 @media (min-width: 667px) and (orientation: landscape) {
         /* iPhone 6/7/8 */
 
@@ -1326,6 +1558,238 @@ html, body{
     .win-modal > h1 {
         font-size: 5vmin;
         width: 100%;
+    }
+
+}
+
+@media (min-width: 414px) and (min-height: 736px) and (orientation: portrait) {
+                            /* iPhone 6/7/8 Plus */
+
+    .intro-modal {
+        position: absolute;
+        top: 14%;
+        left: 3%;
+        height: 94vw;
+        width: 94vw;
+    }
+
+    .intro-modal > h1 {
+        top: 13%;
+        font-size: 5.5vmin;
+    }
+
+    .play-options {
+        height: 60%;
+        width: 100%;
+        top: 32%;
+    }
+
+    .lobbysettings {
+        position: absolute;
+        height: 93%;
+        width: 90vw;
+        left: -24.7%;
+        bottom: 13%;
+    }
+
+    .startlobbyinput, .joinlobbyinput {
+        text-align: center;
+        margin: 0 16.5px;
+        font-size: 0.8rem;
+    }
+
+    .input-cont {
+        top: 58%
+    }
+
+    .gameboard {
+        position: relative;
+        height: 84vw;
+        width: 84vw;
+        top: 18%;
+        left: 8%;
+    }
+
+    .title-bar {
+        top: 4%;
+        left: 32%;
+        height: 15%;
+        width: 40%;
+    }
+
+    .pointsboard-white {
+        position: absolute;
+        display: inline-block;
+        height: 80px;
+        width: 80px;
+        top: 70%;
+        left: 72%;
+    }
+
+    .pointsboard-black {
+        position: absolute;
+        display: inline-block;
+        height: 80px;
+        width: 80px;
+        top: 70%;
+        left: 10%;
+    }
+
+    .pointsW {
+        top: 28%;
+        font-size: 6vmin;
+    }
+
+    .pointsB {
+        top: 28%;
+        font-size: 6vmin;
+    }
+
+    @keyframes hop {
+        0% {top: 70%}
+        25% {top: 67%}
+        50% {top: 70%}
+        75% {top: 69%}
+        100% {top: 70%}
+    }
+
+    .pass {
+        bottom: 8%;
+        left: 8%;
+        height: 5%;
+        width: 6%;
+        font-size: 6vmin;
+    }
+
+    .reset {
+        top: 2%;
+        right: 11%;
+        height: 4%;
+        width: 13%;
+    }
+
+    .reset > p {
+        bottom: 52%;
+        left: 67%;
+        font-size: 5vmin;
+    }
+
+    .rules {
+        top: 2%;
+        left: 3%;
+        height: 4%;
+        width: 8%;
+    }
+
+    .rules > p {
+        bottom: 52%;
+        left: 79%;
+        font-size: 5vmin;
+    }
+
+    .questionmark {
+        font-size: 5.8vmin;
+        bottom: 0%;
+        left: 23%;
+    }
+
+    .rules:hover .questionmark {
+        font-size: 3.1vmin;
+        bottom: 23%;
+        left: 24%;
+        transition: all 0.5s ease;
+        transform: scale(2);
+        color: white;
+    }
+
+    .rules > p {
+        bottom: 59%;
+        left: 79%;
+        font-size: 5vmin;
+    }
+
+/* Clock */
+
+    .timer {
+        bottom: 5%;
+        height: 10%;
+        width: 42%;
+        left: 28%;
+    }
+
+    .black-minutes {
+        font-size: 6vmin;
+        height: 10%;
+        width: 10%;
+        left: 14%;
+        top: 41%;
+    }
+
+    .black-seconds {
+        font-size: 6vmin;
+        height: 10%;
+        width: 10%;
+        left: 16%;
+        top: 41%;
+    }
+
+    .white-minutes {
+        font-size: 6vmin;
+        height: 10%;
+        width: 10%;
+        left: 30%;
+        top: 41%;
+    }
+
+    .white-seconds {
+        font-size: 6vmin;
+        height: 10%;
+        width: 10%;
+        left: 32%;
+        top: 41%;
+    }
+
+    .pass {
+        font-size: 6vmin;
+        bottom: 7%;
+        left: 9%;
+        height: 5%;
+        width: 6%;
+    }
+
+/* Rule & Win Modals */
+
+    .rule-modal {
+        top: 24%;
+        left: 6%;
+        height: 80%;
+        width: 60%;
+    }
+
+    .rulebook {
+        height: 70vw;
+        width: 70vw;
+    }
+
+    .win-modal > h1 {
+        width: 95vw;
+        left: 40%;
+        bottom: 19%;
+        font-size: 8vmin;
+        letter-spacing: 10px;
+    }
+
+    .trophy {
+        height: 70%;
+        left: 8%;
+        width: 60%;
+        bottom: 27%;
+    }
+
+    .playagain {
+        width: 50%;
+        bottom: 5%;
+        left: 12%;
     }
 
 }
