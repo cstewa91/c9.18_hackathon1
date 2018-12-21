@@ -528,7 +528,7 @@ html, body{
 /*--------------------------------------------------------------------------------------------------------------------*/
 
 
-                                    /* Media Queries for Desktops and Laptops */
+                                    /** Media Queries for Desktops and Laptops **/
 
 
 @media (min-width: 1100px) and (min-height: 650px) {
