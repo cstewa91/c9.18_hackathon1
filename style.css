@@ -525,13 +525,421 @@ html, body{
 }
 
 
+/*--------------------------------------------------------------------------------------------------------------------*/
 
 
-/****** Media Queries ******/
+                                    /* Media Queries for Desktops and Laptops */
 
 
-@media (min-width: 320px) and (min-height: 480px) and (orientation: portrait) {
-                            /* iPhone 4 */
+@media (min-width: 1300px) and (min-height: 750px) {
+                /* Desktop XL */
+
+    .gameboard {
+        display: inline-block;
+        position: relative;
+        height: 34vw;
+        width: 34vw;
+        top: 20%;
+        left: 23%;
+    }
+
+    .pointsboard-white {
+        position: relative;
+        display: inline-block;
+        height: 10vw;
+        width: 10vw;
+        top: 30%;
+        left: 35%;
+    }
+
+    .pointsB {
+        font-size: 6vmin;
+        top: 27%;
+    }
+
+    .pointsW {
+        font-size: 6vmin;
+        top: 27%;
+    }
+
+    /* Clock */
+
+    .black-minutes {
+        height: 10%;
+        width: 10%;
+        left: 25%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .black-seconds {
+        height: 10%;
+        width: 10%;
+        left: 24%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .white-minutes {
+        height: 10%;
+        width: 10%;
+        left: 32%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .white-seconds {
+        height: 10%;
+        width: 10%;
+        left: 31%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+}
+
+@media (min-width: 1500px) and (min-height: 850px) {
+    /* Desktop XL */
+
+    .gameboard {
+        display: inline-block;
+        position: relative;
+        height: 34vw;
+        width: 34vw;
+        top: 20%;
+        left: 23%;
+    }
+
+    .pointsboard-white {
+        position: relative;
+        display: inline-block;
+        height: 10vw;
+        width: 10vw;
+        top: 30%;
+        left: 35%;
+    }
+
+    .pointsB {
+        font-size: 6vmin;
+        top: 27%;
+    }
+
+    .pointsW {
+        font-size: 6vmin;
+        top: 27%;
+    }
+
+    /* Clock */
+
+    .black-minutes {
+        height: 10%;
+        width: 10%;
+        left: 25%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .black-seconds {
+        height: 10%;
+        width: 10%;
+        left: 24%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .white-minutes {
+        height: 10%;
+        width: 10%;
+        left: 32%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .white-seconds {
+        height: 10%;
+        width: 10%;
+        left: 31%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+}
+
+@media (min-width: 1550px) and (min-height: 850px) {
+                /* Desktop XXL */
+
+    .gameboard {
+        display: inline-block;
+        position: relative;
+        height: 33vw;
+        width: 33vw;
+        top: 18%;
+        left: 23%;
+    }
+
+    .title-bar {
+        position: absolute;
+        top: 2%;
+        left: 34%;
+        height: 13%;
+        width: 31%;
+    }
+
+    .pointsboard-white {
+        position: relative;
+        display: inline-block;
+        height: 9vw;
+        width: 9vw;
+        top: 30%;
+        left: 35%;
+    }
+
+    .pointsboard-black {
+        position: relative;
+        display: inline-block;
+        height: 9vw;
+        width: 9vw;
+        top: 30%;
+        left: 11%;
+    }
+
+    .pointsB {
+        font-size: 6vmin;
+        top: 27%;
+    }
+
+    .pointsW {
+        font-size: 6vmin;
+        top: 27%;
+    }
+
+    /* Clock */
+
+    .timer {
+        position: absolute;
+        bottom: 4%;
+        height: 12%;
+        width: 30%;
+        left: 34%;
+    }
+
+    .black-minutes {
+        height: 10%;
+        width: 10%;
+        left: 29%;
+        top: 37%;
+        font-size: 5vmin;
+    }
+
+    .black-seconds {
+        height: 10%;
+        width: 10%;
+        left: 27%;
+        top: 37%;
+        font-size: 5vmin;
+    }
+
+    .white-minutes {
+        height: 10%;
+        width: 10%;
+        left: 30%;
+        top: 37%;
+        font-size: 5vmin;
+    }
+
+    .white-seconds {
+        height: 10%;
+        width: 10%;
+        left: 28%;
+        top: 37%;
+        font-size: 5vmin;
+    }
+
+}
+
+@media (min-width: 1600px) and (min-height: 850px) {
+    /* Desktop XXL */
+
+    .gameboard {
+        display: inline-block;
+        position: relative;
+        height: 32vw;
+        width: 32vw;
+        top: 18%;
+        left: 24%;
+    }
+
+    .title-bar {
+        position: absolute;
+        top: 2%;
+        left: 34%;
+        height: 13%;
+        width: 31%;
+    }
+
+    .pointsboard-white {
+        position: relative;
+        display: inline-block;
+        height: 9vw;
+        width: 9vw;
+        top: 30%;
+        left: 35%;
+    }
+
+    .pointsboard-black {
+        position: relative;
+        display: inline-block;
+        height: 9vw;
+        width: 9vw;
+        top: 30%;
+        left: 12%;
+    }
+
+    .pointsB {
+        font-size: 6vmin;
+        top: 27%;
+    }
+
+    .pointsW {
+        font-size: 6vmin;
+        top: 27%;
+    }
+
+    /* Clock */
+
+    .timer {
+        bottom: 4%;
+        height: 13%;
+        width: 30%;
+        left: 34%;
+    }
+
+    .black-minutes {
+        height: 10%;
+        width: 10%;
+        left: 27%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .black-seconds {
+        height: 10%;
+        width: 10%;
+        left: 25%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .white-minutes {
+        height: 10%;
+        width: 10%;
+        left: 32%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .white-seconds {
+        height: 10%;
+        width: 10%;
+        left: 30%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+}
+
+@media (min-width: 1700px) and (min-height: 900px) {
+                /* Desktop XXXL */
+
+    .gameboard {
+        display: inline-block;
+        position: relative;
+        height: 33vw;
+        width: 33vw;
+        top: 15%;
+        left: 24%;
+    }
+
+    .title-bar {
+        top: 2%;
+        left: 35%;
+        height: 12%;
+        width: 31%;
+    }
+
+    .pointsboard-white {
+        position: relative;
+        display: inline-block;
+        height: 9vw;
+        width: 9vw;
+        top: 30%;
+        left: 35%;
+    }
+
+    .pointsboard-black {
+        position: relative;
+        display: inline-block;
+        height: 9vw;
+        width: 9vw;
+        top: 30%;
+        left: 12%;
+    }
+
+    .pointsB {
+        font-size: 6vmin;
+        top: 27%;
+    }
+
+    .pointsW {
+        font-size: 6vmin;
+        top: 27%;
+    }
+
+    /* Clock */
+
+    .black-minutes {
+        height: 10%;
+        width: 10%;
+        left: 27%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .black-seconds {
+        height: 10%;
+        width: 10%;
+        left: 25%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .white-minutes {
+        height: 10%;
+        width: 10%;
+        left: 32%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .white-seconds {
+        height: 10%;
+        width: 10%;
+        left: 30%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+}
+
+
+/*---------------------------------------------------------------------------------------------------------------------*/
+ 
+                                            /* Media Queries for Phones and Tablets */
+
+
+
+@media (min-width: 320px) and (min-height: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+                                        /* iPhone 4 */
 
     .intro-modal {
         position: absolute;
@@ -757,8 +1165,8 @@ html, body{
 
 }
 
-@media (min-width: 480px) and (orientation: landscape) {
-                /* iPhone 4 */
+@media (min-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+                                    /* iPhone 4 */
 
     .intro-modal {
         position: absolute;
@@ -904,8 +1312,8 @@ html, body{
 
 }
 
-@media (min-width: 320px) and (min-height: 568px) and (orientation: portrait) {
-                            /* iPhone 5/SE */
+@media (min-width: 320px) and (min-height: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+                                            /* iPhone 5/SE */
 
     .intro-modal {
         position: absolute;
@@ -1135,8 +1543,8 @@ html, body{
 
 }
 
-@media (min-width: 568px) and (orientation: landscape) {
-                /* iPhone 5/SE */
+@media (min-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+                                    /* iPhone 5/SE */
 
     .intro-modal {
         position: absolute;
@@ -1238,8 +1646,8 @@ html, body{
     
 }
 
-@media (min-width: 375px) and (min-height: 667px) and (orientation: portrait) {
-                            /* iPhone 6/7/8 */
+@media (min-width: 375px) and (min-height: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+                                                /* iPhone 6/7/8 */
 
     .intro-modal {
         position: absolute;
@@ -1469,8 +1877,8 @@ html, body{
 
 }
 
-@media (min-width: 667px) and (orientation: landscape) {
-        /* iPhone 6/7/8 */
+@media (min-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+                                    /* iPhone 6/7/8 */
 
     .intro-modal {
         position: absolute;
@@ -1576,8 +1984,8 @@ html, body{
 
 }
 
-@media (min-width: 414px) and (min-height: 736px) and (orientation: portrait) {
-                            /* iPhone 6/7/8 Plus */
+@media (min-width: 414px) and (min-height: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+                                            /* iPhone 6/7/8 Plus */
 
     .intro-modal {
         position: absolute;
@@ -1808,8 +2216,8 @@ html, body{
 
 }
 
-@media (min-width: 736px) and (orientation: landscape) {
-                /* iPhone 6/7/8 Plus */
+@media (min-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+                                /* iPhone 6/7/8 Plus */
 
     .intro-modal {
         position: absolute;
@@ -1924,8 +2332,8 @@ html, body{
 
 }
 
-@media (min-width: 375px) and (min-height: 812px) and (orientation: portrait) {
-                            /* iPhone X */
+@media (min-width: 375px) and (min-height: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+                                                /* iPhone X */
 
     .intro-modal {
         position: absolute;
@@ -2152,8 +2560,8 @@ html, body{
 
 }
 
-@media (min-width: 812px) and (orientation: landscape) {
-                    /* iPhone X */
+@media (min-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+                                    /* iPhone X */
 
     .intro-modal {
         position: absolute;
@@ -2327,8 +2735,8 @@ html, body{
     }
 }
 
-@media (min-width: 768px) and (min-height: 1024px) and (orientation: portrait) {
-                                /* iPad */
+@media (min-width: 768px) and (max-width: 1024px) and (min-height: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+                                                /* iPad */
 
     .intro-modal {
         position: absolute;
@@ -2462,7 +2870,7 @@ html, body{
 
     .rules:hover .questionmark {
         font-size: 3.1vmin;
-        bottom: 23%;
+        bottom: 32%;
         left: 24%;
         transition: all 0.5s ease;
         transform: scale(2);
@@ -2555,8 +2963,8 @@ html, body{
 
 }
 
-@media (min-width: 1024px) and (min-height: 768px) and (orientation: landscape) {
-                                /* iPad */
+@media (min-width: 1024px) and (max-width: 1024px) and (min-height: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+                                                 /* iPad */
 
     .intro-modal {
         position: absolute;
@@ -2653,7 +3061,7 @@ html, body{
     }
 
     .rules > p {
-        bottom: 110%;
+        bottom: 60%;
         left: 51%;
         font-size: 4vmin;
     }
@@ -2666,7 +3074,7 @@ html, body{
 
     .rules:hover .questionmark {
         font-size: 3.1vmin;
-        bottom: 23%;
+        bottom: 46%;
         left: 24%;
         transition: all 0.5s ease;
         transform: scale(1.7);
@@ -2737,8 +3145,8 @@ html, body{
 
 }
 
-@media (min-width: 1024px) and (min-height: 1366px) and (orientation: portrait) {
-                                /* iPad Pro */
+@media (min-width: 1024px) and (min-height: 1366px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+                                                /* iPad Pro */
 
     .intro-modal {
         position: absolute;
@@ -2965,8 +3373,8 @@ html, body{
 
 }
 
-@media (min-width: 1366px) and (min-height: 1024px) and (orientation: landscape) {
-                                /* iPad Pro */
+@media (min-width: 1366px) and (min-height: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+                                                /* iPad Pro */
 
     .intro-modal {
         position: absolute;
@@ -3063,7 +3471,7 @@ html, body{
     }
 
     .rules > p {
-        bottom: 110%;
+        bottom: 60%;
         left: 51%;
         font-size: 4vmin;
     }
@@ -3076,7 +3484,7 @@ html, body{
 
     .rules:hover .questionmark {
         font-size: 3.1vmin;
-        bottom: 23%;
+        bottom: 54%;
         left: 24%;
         transition: all 0.5s ease;
         transform: scale(1.7);
