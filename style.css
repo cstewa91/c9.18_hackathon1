@@ -2361,67 +2361,67 @@ html, body{
 
     .startlobbyinput, .joinlobbyinput {
         text-align: center;
-        margin: 0 13.5px;
-        font-size: 0.8rem;
+        margin: 0px 33.3px;
+        font-size: 1.8rem;
     }
 
     .input-cont {
-        top: 56%;
+        top: 60%;
     }
 
     .gameboard {
         position: relative;
-        height: 88vw;
-        width: 88vw;
-        top: 21%;
-        left: 6%;
+        height: 70vw;
+        width: 70vw;
+        top: 17%;
+        left: 15%;
     }
 
     .title-bar {
-        top: 9%;
-        left: 25%;
+        top: 6%;
+        left: 32%;
         height: 10%;
-        width: 50%;
+        width: 36%;
     }
 
     .pointsboard-white {
         position: absolute;
         display: inline-block;
-        height: 90px;
-        width: 90px;
-        top: 70%;
-        left: 65%;
+        height: 110px;
+        width: 110px;
+        top: 75%;
+        left: 75%;
     }
 
     .pointsboard-black {
         position: absolute;
         display: inline-block;
-        height: 90px;
-        width: 90px;
-        top: 70%;
+        height: 110px;
+        width: 110px;
+        top: 75%;
         left: 10%;
     }
 
     .pointsW {
-        top: 28%;
-        font-size: 8vmin;
+        top: 22%;
+        font-size: 6vmin;
     }
 
     .pointsB {
-        top: 28%;
-        font-size: 8vmin;
+        top: 22%;
+        font-size: 6vmin;
     }
 
     @keyframes hop {
-        0% {top: 70%}
-        25% {top: 67%}
-        50% {top: 70%}
-        75% {top: 69%}
-        100% {top: 70%}
+        0% {top: 75%}
+        25% {top: 72%}
+        50% {top: 75%}
+        75% {top: 74%}
+        100% {top: 75%}
     }
 
     .pass {
-        bottom: 8%;
+        bottom: 5%;
         left: 8%;
         height: 5%;
         width: 6%;
@@ -2431,27 +2431,27 @@ html, body{
     .reset {
         top: 2%;
         right: 13%;
-        height: 3%;
+        height: 5%;
         width: 13%;
     }
 
     .reset > p {
-        bottom: 81%;
+        bottom: 66%;
         left: 67%;
-        font-size: 5.5vmin;
+        font-size: 5vmin;
     }
 
     .rules {
-        top: 1%;
+        top: 3%;
         left: 3%;
         height: 4%;
         width: 8%;
     }
 
     .rules > p {
-        bottom: 41%;
-        left: 79%;
-        font-size: 5.5vmin;
+        bottom: 110%;
+        left: 70%;
+        font-size: 5vmin;
     }
 
     .questionmark {
@@ -2479,35 +2479,35 @@ html, body{
     }
 
     .black-minutes {
-        font-size: 6vmin;
+        font-size: 5.8vmin;
         height: 10%;
         width: 10%;
-        left: 14%;
-        top: 41%;
+        left: 19%;
+        top: 37%;
     }
 
     .black-seconds {
-        font-size: 6vmin;
+        font-size: 5.8vmin;
         height: 10%;
         width: 10%;
-        left: 16%;
-        top: 41%;
+        left: 22%;
+        top: 37%;
     }
 
     .white-minutes {
-        font-size: 6vmin;
+        font-size: 5.8vmin;
         height: 10%;
         width: 10%;
-        left: 30%;
-        top: 41%;
+        left: 28%;
+        top: 37%;
     }
 
     .white-seconds {
-        font-size: 6vmin;
+        font-size: 5.8vmin;
         height: 10%;
         width: 10%;
-        left: 32%;
-        top: 41%;
+        left: 31%;
+        top: 37%;
     }
 
     .pass {
@@ -2535,9 +2535,9 @@ html, body{
     .win-modal > h1 {
         width: 95vw;
         left: 40%;
-        bottom: 19%;
+        bottom: 10%;
         font-size: 8vmin;
-        letter-spacing: 10px;
+        letter-spacing: 20px;
     }
 
     .trophy {
@@ -2549,7 +2549,7 @@ html, body{
 
     .playagain {
         width: 50%;
-        bottom: 5%;
+        bottom: 0%;
         left: 12%;
     }
 
