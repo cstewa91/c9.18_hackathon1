@@ -531,6 +531,126 @@ html, body{
                                     /** Media Queries for Desktops and Laptops **/
 
 
+@media (min-width: 900px) and (min-height: 600px) {
+                /* Desktop MD */
+
+    .startlobbyinput, .joinlobbyinput {
+        text-align: center;
+        margin: 0 25px;
+        font-size: 16px;
+    }
+
+    .input-cont {
+        top: 62%;
+        position: relative;
+    }
+     
+    .gameboard {
+        display: inline-block;
+        position: relative;
+        height: 38vw;
+        width: 38vw;  
+        top: 19%;
+        left: 21%;
+    }
+
+    .title-bar {
+        position: absolute;
+        top: 2%;
+        left: 35%;
+        height: 13%;
+        width: 31%;
+    }
+
+    .pointsboard-white {
+        position: relative;
+        display: inline-block;
+        height: 10vw;
+        width: 10vw;
+        top: 30%;
+        left: 31%;
+    }
+
+    .pointsboard-black {
+        position: relative;
+        display: inline-block;
+        height: 10vw;
+        width: 10vw;
+        top: 30%;
+        left: 11%;
+    }
+
+    .pointsB {
+        font-size: 6vmin;
+        top: 24%;
+    }
+
+    .pointsW {
+        font-size: 6vmin;
+        top: 24%;
+    }
+
+    .pass {
+        bottom: 8%;
+        left: 26%;
+        height: 5%;
+        width: 6%;
+    }
+
+    /* Clock */
+
+    .timer {
+        position: absolute;
+        bottom: 4%;
+        height: 12%;
+        width: 30%;
+        left: 36%;
+    }
+
+    .black-minutes {
+        height: 10%;
+        width: 10%;
+        left: 23%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .black-seconds {
+        height: 10%;
+        width: 10%;
+        left: 23%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .white-minutes {
+        height: 10%;
+        width: 10%;
+        left: 30%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .white-seconds {
+        height: 10%;
+        width: 10%;
+        left: 30%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    /* Rule and Win Modal */
+
+    .rule-modal {
+        position: absolute;
+        top: 10%;
+        left: 18%;
+        height: 80%;
+        width: 60%;
+    }
+
+}                                   
+
 @media (min-width: 1000px) and (min-height: 600px) {
                 /* Desktop LG */
 
