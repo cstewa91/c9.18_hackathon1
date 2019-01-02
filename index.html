@@ -13,33 +13,40 @@
         <title>Reversi</title>
     </head>
     <body>
-        <div class="main-cont">       
-                <div class = 'modal-background '></div>
-                <div class = 'intro-modal'>
-                    <h1>Welcome, choose your play option</h1>
-                    <div class="play-options">
-                        <div class="playonline"></div>
-                        <div class="playlocal"></div>
-                    </div> 
+        <div class="main-cont">
+            <div class="toosmall-modal">
+                <div class="toosmall-modal-background"></div>
+                <div class="toosmall-background-blur"></div>
+                <div class="toosmall-message">
+                    <p>The current dimensions of your device or browser is not currently supported. Try resizing your browser or rotating your device.</p>
                 </div>
-                <div class = 'lobby-modal displaynone'>
-                    <div class = 'lobbysettings'>
-                        <div class = 'input-cont'>
-                            <input class = 'startlobbyinput' placeholder = 'Type Lobby Name' type="text" name="startlobby">
-                            <input class = 'joinlobbyinput' placeholder = 'Type Lobby Name' type="text" name="joinlobby">
-                        </div>
-                        <div class = 'startlobby'></div>
-                        <div class = 'joinlobby'></div>
+            </div>
+            <div class='modal-background '></div>
+            <div class='intro-modal'>
+                <h1>Welcome, choose your play option</h1>
+                <div class="play-options">
+                    <div class="playonline"></div>
+                    <div class="playlocal"></div>
+                </div> 
+            </div>
+            <div class = 'lobby-modal displaynone'>
+                <div class = 'lobbysettings'>
+                    <div class = 'input-cont'>
+                        <input class = 'startlobbyinput' placeholder = 'Type Lobby Name' type="text" name="startlobby">
+                        <input class = 'joinlobbyinput' placeholder = 'Type Lobby Name' type="text" name="joinlobby">
                     </div>
+                    <div class = 'startlobby'></div>
+                    <div class = 'joinlobby'></div>
                 </div>
-                <div class="win-modal displaynone">
-                    <div class="trophy"></div>
-                    <h1>Player Won!</h1>
-                    <div class="playagain"></div>
-                </div>
-                <div class="rule-modal displaynone">
-                    <div class="rulebook"><img src="images/rules.png"></div>
-                </div>
+            </div>
+            <div class="win-modal displaynone">
+                <div class="trophy"></div>
+                <h1>Player Won!</h1>
+                <div class="playagain"></div>
+            </div>
+            <div class="rule-modal displaynone">
+                <div class="rulebook"><img src="images/rules.png"></div>
+            </div>
             <div class="reset">
                 <div class="reset-button"></div>
                 <p>Reset</p>
