@@ -294,6 +294,50 @@ html, body{
 
 /*** Modals ***/
 
+.toosmall-modal {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    display: none;
+}
+
+.toosmall-modal-background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    z-index: 11;
+    background-image: url(images/park.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;  
+}
+
+.toosmall-background-blur {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    z-index: 11;
+    background-image: url(images/park.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;  
+    filter: blur(10px);
+}
+
+.toosmall-message {
+    position: absolute;
+    text-align: center;
+    color: whitesmoke;
+    font-family: 'Righteous', cursive;
+    font-size: 9vmin;
+    z-index: 12;
+    padding: 20px;
+    top: 10%;
+}
+
 .modal-background{
     position: absolute;
     height: 100%;
@@ -302,6 +346,7 @@ html, body{
     background-color: grey;
     z-index: 5;
 }
+
 .intro-modal{
     position: absolute;
     top: 10%;
@@ -531,6 +576,364 @@ html, body{
                                     /** Media Queries for Desktops and Laptops **/
 
 
+@media (max-width: 549px) {
+    .toosmall-modal{
+        display: inline;
+    }
+}
+
+@media (max-height: 349px) {
+    .toosmall-modal{
+        display: inline;
+    }
+}
+
+@media (min-width: 550px) and (min-height: 350px) {
+                /* Desktop XS */
+
+    .startlobbyinput, .joinlobbyinput {
+        text-align: center;
+        margin: 0 23px;
+        font-size: 8px;
+    }
+
+    .input-cont {
+        top: 60%;
+        position: relative;
+    }
+
+    .gameboard {
+        display: inline-block;
+        height: 39vw;
+        width: 39vw;
+        position: relative;
+        top: 18%;
+        left: 18%;
+    }
+
+    .title-bar {
+        position: absolute;
+        top: 2%;
+        left: 35%;
+        height: 13%;
+        width: 31%;
+    }
+
+    .pointsboard-black {
+        position: relative;
+        display: inline-block;
+        height: 12vw;
+        width: 12vw;
+        top: 30%;
+        left: 10%;
+    }
+
+    .pointsboard-white {
+        position: relative;
+        display: inline-block;
+        height: 12vw;
+        width: 12vw;
+        top: 30%;
+        left: 26%;
+    }
+
+    .pointsB {
+        top: 28%;
+    }
+
+    .pointsW {
+        top: 28%;
+    }
+
+    /* Clock */
+
+    .black-minutes {
+        height: 10%;
+        width: 10%;
+        left: 22%;
+        top: 40%;
+        font-size: 5vmin;
+    }
+
+    .black-seconds {
+        height: 10%;
+        width: 10%;
+        left: 21%;
+        top: 40%;
+        font-size: 5vmin;
+    }
+
+    .white-minutes {
+        height: 10%;
+        width: 10%;
+        left: 30%;
+        top: 40%;
+        font-size: 5vmin;
+    }
+
+    .white-seconds {
+        height: 10%;
+        width: 10%;
+        left: 28%;
+        top: 40%;
+        font-size: 5vmin;
+    }
+
+      /* Rule and Win Modal */
+
+      .rule-modal {
+        top: 10%;
+        left: 18%;
+        height: 80%;
+        width: 60%;
+    }
+
+    .win-modal > h1 {
+        font-size: 3.5vmin;
+        letter-spacing: 15px;
+        bottom: 7%;
+    }
+
+}
+
+@media (min-width: 600px) and (min-height: 350px) {
+                /* Desktop SM */
+
+    .startlobbyinput, .joinlobbyinput {
+        text-align: center;
+        margin: 0 17px;
+        font-size: 9px;
+    }
+
+    .input-cont {
+        top: 61%;
+        position: relative;
+    }
+
+    .title-bar {
+        position: absolute;
+        top: 2%;
+        left: 35%;
+        height: 11%;
+        width: 31%;
+    }
+
+   .gameboard {
+        display: inline-block;
+        height: 38vw;
+        width: 40vw;
+        position: relative;
+        top: 16%;
+        left: 19%;
+   }
+
+   .pass {
+       left: 22%
+   }
+
+   .pointsboard-white {
+        position: relative;
+        display: inline-block;
+        height: 11vw;
+        width: 11vw;
+        top: 27%;
+        left: 26%;
+   }
+
+   .pointsboard-black {
+        position: relative;
+        display: inline-block;
+        height: 11vw;
+        width: 11vw;
+        top: 30%;
+        left: 10%;
+   }
+
+   .pointsB {
+       top: 28%;
+   }
+
+   .pointsW {
+        top: 28%;
+    }
+
+   /* Clock */
+
+   .timer {
+        position: absolute;
+        bottom: 4%;
+        height: 12%;
+        width: 30%;
+        left: 35%;
+   }
+
+   .black-minutes {
+        position: relative;
+        height: 10%;
+        width: 10%;
+        left: 26%;
+        top: 38%;
+   }
+
+   .black-seconds {
+        position: relative;
+        height: 10%;
+        width: 10%;
+        left: 23%;
+        top: 38%;
+   }
+
+   .white-minutes {
+        position: relative;
+        height: 10%;
+        width: 10%;
+        left: 29%;
+        top: 38%;
+    }
+
+    .white-seconds {
+        position: relative;
+        height: 10%;
+        width: 10%;
+        left: 26%;
+        top: 38%;
+    }
+
+    /* Rule and Win Modal */
+
+    .rule-modal {
+        top: 10%;
+        left: 20%;
+        height: 80%;
+        width: 60%;
+    }
+
+    .win-modal > h1 {
+        font-size: 3.5vmin;
+        letter-spacing: 15px;
+        bottom: 7%;
+    }
+}   
+
+@media (min-width: 600px) and (min-height: 400px) {
+                /* Desktop SM */
+
+    .startlobbyinput, .joinlobbyinput {
+        text-align: center;
+        margin: 0 19px;
+        font-size: 10px;
+    }
+
+    .input-cont {
+        top: 61%;
+        position: relative;
+    }
+
+    .title-bar {
+        position: absolute;
+        top: 2%;
+        left: 35%;
+        height: 11%;
+        width: 31%;
+    }
+
+   .gameboard {
+        display: inline-block;
+        height: 42vw;
+        width: 42vw;
+        position: relative;
+        top: 16%;
+        left: 18%;
+   }
+
+   .pass {
+       left: 22%
+   }
+
+   .pointsboard-white {
+        position: relative;
+        display: inline-block;
+        height: 11vw;
+        width: 11vw;
+        top: 30%;
+        left: 26%;
+   }
+
+   .pointsboard-black {
+        position: relative;
+        display: inline-block;
+        height: 11vw;
+        width: 11vw;
+        top: 30%;
+        left: 10%;
+   }
+
+   .pointsB {
+       top: 24%;
+   }
+
+   .pointsW {
+        top: 24%;
+    }
+
+   /* Clock */
+
+   .timer {
+        position: absolute;
+        bottom: 4%;
+        height: 12%;
+        width: 30%;
+        left: 35%;
+   }
+
+   .black-minutes {
+        position: relative;
+        height: 10%;
+        width: 10%;
+        left: 23%;
+        top: 38%;
+   }
+
+   .black-seconds {
+        position: relative;
+        height: 10%;
+        width: 10%;
+        left: 22%;
+        top: 38%;
+   }
+
+   .white-minutes {
+        position: relative;
+        height: 10%;
+        width: 10%;
+        left: 29%;
+        top: 38%;
+    }
+
+    .white-seconds {
+        position: relative;
+        height: 10%;
+        width: 10%;
+        left: 28%;
+        top: 38%;
+    }
+
+    /* Rule and Win Modal */
+
+    .rule-modal {
+        top: 10%;
+        left: 16%;
+        height: 80%;
+        width: 60%;
+    }
+
+    .win-modal > h1 {
+        font-size: 3.5vmin;
+        letter-spacing: 15px;
+        bottom: 7%;
+    }
+}   
+
 @media (min-width: 650px) and (min-height: 400px) {
                 /* Desktop SM */
 
@@ -632,6 +1035,117 @@ html, body{
         width: 10%;
         left: 27%;
         top: 40%;
+    }
+
+    /* Rule and Win Modal */
+
+    .win-modal > h1 {
+        font-size: 4vmin;
+        bottom: 7%;
+    }
+}   
+
+@media (min-width: 650px) and (min-height: 450px) {
+                /* Desktop SM */
+
+    .startlobbyinput, .joinlobbyinput {
+        text-align: center;
+        margin: 0 15px;
+        font-size: 11px;
+    }
+
+    .input-cont {
+        top: 61%;
+        position: relative;
+    }
+
+    .title-bar {
+        position: absolute;
+        top: 2%;
+        left: 35%;
+        height: 11%;
+        width: 31%;
+    }
+
+   .gameboard {
+        display: inline-block;
+        height: 42vw;
+        width: 42vw;
+        position: relative;
+        top: 17%;
+        left: 19%;
+   }
+
+   .pass {
+       left: 22%
+   }
+
+   .pointsboard-white {
+        position: relative;
+        display: inline-block;
+        height: 10vw;
+        width: 10vw;
+        top: 30%;
+        left: 28%;
+   }
+
+   .pointsboard-black {
+        position: relative;
+        display: inline-block;
+        height: 10vw;
+        width: 10vw;
+        top: 30%;
+        left: 10%;
+   }
+
+   .pointsB {
+       top: 24%;
+   }
+
+   .pointsW {
+        top: 24%;
+    }
+
+   /* Clock */
+
+   .timer {
+        position: absolute;
+        bottom: 4%;
+        height: 12%;
+        width: 30%;
+        left: 35%;
+   }
+
+   .black-minutes {
+        position: relative;
+        height: 10%;
+        width: 10%;
+        left: 22%;
+        top: 39%;
+   }
+
+   .black-seconds {
+        position: relative;
+        height: 10%;
+        width: 10%;
+        left: 21%;
+        top: 39%;
+   }
+
+   .white-minutes {
+        position: relative;
+        height: 10%;
+        width: 10%;
+        left: 29%;
+        top: 39%;
+    }
+
+    .white-seconds {
+        position: relative;
+        height: 10%;
+        width: 10%;
+        left: 28%;
+        top: 39%;
     }
 
     /* Rule and Win Modal */
@@ -1041,6 +1555,138 @@ html, body{
     }
 
 }   
+
+@media (min-width: 750px) and (min-height: 500px) {
+                /* Desktop MD */
+
+    .intro-modal {
+        top: 15%;
+        left: 20%;
+        height: 90%;
+        width: 60%;
+    }
+
+    .startlobbyinput, .joinlobbyinput {
+        text-align: center;
+        margin: 0 19px;
+        font-size: 13px;
+    }
+
+    .input-cont {
+        top: 62%;
+        position: relative;
+    }
+     
+    .gameboard {
+        display: inline-block;
+        position: relative;
+        height: 44vw;
+        width: 44vw;
+        top: 14%;
+        left: 17%;
+    }
+
+    .title-bar {
+        position: absolute;
+        top: 1%;
+        left: 35%;
+        height: 11%;
+        width: 31%;
+    }
+
+    .pointsboard-white {
+        position: relative;
+        display: inline-block;
+        height: 11vw;
+        width: 11vw;
+        top: 30%;
+        left: 25%;
+    }
+
+    .pointsboard-black {
+        position: relative;
+        display: inline-block;
+        height: 11vw;
+        width: 11vw;
+        top: 30%;
+        left: 9%;
+    }
+
+    .pointsB {
+        font-size: 6vmin;
+        top: 25%;
+    }
+
+    .pointsW {
+        font-size: 6vmin;
+        top: 25%;
+    }
+
+    .pass {
+        bottom: 8%;
+        left: 26%;
+        height: 5%;
+        width: 6%;
+    }
+
+    /* Clock */
+
+    .timer {
+        position: absolute;
+        bottom: 4%;
+        height: 12%;
+        width: 30%;
+        left: 35%;
+    }
+
+    .black-minutes {
+        height: 10%;
+        width: 10%;
+        left: 23%;
+        top: 37%;
+        font-size: 5vmin;
+    }
+
+    .black-seconds {
+        height: 10%;
+        width: 10%;
+        left: 22%;
+        top: 37%;
+        font-size: 5vmin;
+    }
+
+    .white-minutes {
+        height: 10%;
+        width: 10%;
+        left: 30%;
+        top: 37%;
+        font-size: 5vmin;
+    }
+
+    .white-seconds {
+        height: 10%;
+        width: 10%;
+        left: 29%;
+        top: 37%;
+        font-size: 5vmin;
+    }
+
+    /* Rule and Win Modal */
+
+    .rule-modal {
+        position: absolute;
+        top: 10%;
+        left: 16%;
+        height: 80%;
+        width: 60%;
+    }
+
+    .win-modal > h1 {
+        letter-spacing: 18px;
+        font-size: 4.5vmin;
+    }
+
+}  
 
 @media (min-width: 800px) and (min-height: 400px) {
             /* Desktop MD */
@@ -2867,8 +3513,8 @@ html, body{
 
     .startlobbyinput, .joinlobbyinput {
         text-align: center;
-        margin: 0 50px;
-        font-size: 21px;
+        margin: 0 58px;
+        font-size: 22px;
     }
 
     .input-cont {
@@ -3321,6 +3967,10 @@ html, body{
 @media (min-width: 320px) and (min-height: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
                                         /* iPhone 4 */
 
+    .toosmall-modal{
+        display: none;
+    }
+
     .intro-modal {
         position: absolute;
         top: 10%;
@@ -3548,6 +4198,10 @@ html, body{
 @media (min-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
                                     /* iPhone 4 */
 
+    .toosmall-modal{
+        display: none;
+    }
+                            
     .intro-modal {
         position: absolute;
         top: 10%;
@@ -3694,6 +4348,10 @@ html, body{
 
 @media (min-width: 320px) and (min-height: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
                                             /* iPhone 5/SE */
+
+    .toosmall-modal{
+        display: none;
+    }
 
     .intro-modal {
         position: absolute;
@@ -3926,6 +4584,10 @@ html, body{
 @media (min-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
                                     /* iPhone 5/SE */
 
+    .toosmall-modal{
+        display: none;
+    }
+
     .intro-modal {
         position: absolute;
         top: 10%;
@@ -4028,6 +4690,10 @@ html, body{
 
 @media (min-width: 375px) and (min-height: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
                                                 /* iPhone 6/7/8 */
+
+    .toosmall-modal{
+        display: none;
+    }
 
     .intro-modal {
         position: absolute;
@@ -4260,6 +4926,10 @@ html, body{
 @media (min-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
                                     /* iPhone 6/7/8 */
 
+    .toosmall-modal{
+        display: none;
+    }
+
     .intro-modal {
         position: absolute;
         top: 10%;
@@ -4366,6 +5036,10 @@ html, body{
 
 @media (min-width: 414px) and (min-height: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
                                             /* iPhone 6/7/8 Plus */
+
+    .toosmall-modal{
+        display: none;
+    }
 
     .intro-modal {
         position: absolute;
@@ -4599,6 +5273,10 @@ html, body{
 @media (min-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
                                 /* iPhone 6/7/8 Plus */
 
+    .toosmall-modal{
+        display: none;
+    }
+
     .intro-modal {
         position: absolute;
         top: 10%;
@@ -4714,6 +5392,10 @@ html, body{
 
 @media (min-width: 375px) and (min-height: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
                                                 /* iPhone X */
+
+    .toosmall-modal{
+        display: none;
+    }
 
     .intro-modal {
         position: absolute;
@@ -4943,6 +5625,10 @@ html, body{
 @media (min-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
                                     /* iPhone X */
 
+    .toosmall-modal{
+        display: none;
+    }
+
     .intro-modal {
         position: absolute;
         top: 6%;
@@ -5117,6 +5803,10 @@ html, body{
 
 @media (min-width: 768px) and (max-width: 1024px) and (min-height: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
                                                 /* iPad */
+
+    .toosmall-modal{
+        display: none;
+    }
 
     .intro-modal {
         position: absolute;
@@ -5346,6 +6036,10 @@ html, body{
 @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
                                                  /* iPad */
 
+    .toosmall-modal{
+        display: none;
+    }
+
     .intro-modal {
         position: absolute;
         top: 10%;
@@ -5471,28 +6165,28 @@ html, body{
     .black-minutes {
         height: 10%;
         width: 10%;
-        left: 18%;
+        left: 19%;
         top: 39%;
     }
 
     .black-seconds {
         height: 10%;
         width: 10%;
-        left: 19%;
+        left: 20%;
         top: 39%;
     }
 
     .white-minutes {
         height: 10%;
         width: 10%;
-        left: 32%;
+        left: 31%;
         top: 39%;
     }
 
     .white-seconds {
         height: 10%;
         width: 10%;
-        left: 33%;
+        left: 32%;
         top: 39%;
     }
 
@@ -5528,6 +6222,10 @@ html, body{
 @media (min-width: 1024px) and (min-height: 1366px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
                                                 /* iPad Pro */
 
+    .toosmall-modal{
+        display: none;
+    }
+
     .intro-modal {
         position: absolute;
         top: 6%;
@@ -5560,7 +6258,7 @@ html, body{
     .startlobbyinput, .joinlobbyinput {
         text-align: center;
         margin: 0px 58px;
-        font-size: 2rem;
+        font-size: 30px;
     }
 
     .input-cont {
@@ -5756,6 +6454,10 @@ html, body{
 @media (min-width: 1366px) and (min-height: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
                                                 /* iPad Pro */
 
+    .toosmall-modal{
+        display: none;
+    }
+
     .intro-modal {
         position: absolute;
         top: 10%;
@@ -5881,29 +6583,29 @@ html, body{
     .black-minutes {
         height: 10%;
         width: 10%;
-        left: 18%;
-        top: 39%;
+        left: 19%;
+        top: 37%;
     }
 
     .black-seconds {
         height: 10%;
         width: 10%;
-        left: 19%;
-        top: 39%;
+        left: 20%;
+        top: 37%;
     }
 
     .white-minutes {
         height: 10%;
         width: 10%;
-        left: 33%;
-        top: 39%;
+        left: 32%;
+        top: 37%;
     }
 
     .white-seconds {
         height: 10%;
         width: 10%;
-        left: 34%;
-        top: 39%;
+        left: 33%;
+        top: 37%;
     }
 
     .pass {
