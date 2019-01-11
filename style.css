@@ -3772,6 +3772,116 @@ html, body{
 
 }
 
+@media (min-width: 1600px) and (min-height: 700px) {
+                /* Desktop XL */
+
+    .startlobbyinput, .joinlobbyinput {
+        text-align: center;
+        margin: 0 50px;
+        font-size: 20px;
+    }
+
+    .input-cont {
+        top: 62%;
+        position: relative;
+    }
+     
+    .gameboard {
+        display: inline-block;
+        position: relative;
+        height: 28vw;
+        width: 28vw;
+        top: 16%;
+        left: 27%;
+    }
+
+    .title-bar {
+        position: absolute;
+        top: 2%;
+        left: 35%;
+        height: 12%;
+        width: 31%;
+    }
+
+    .pointsboard-white {
+        position: relative;
+        display: inline-block;
+        height: 9vw;
+        width: 9vw;
+        top: 30%;
+        left: 39%;
+    }
+
+    .pointsboard-black {
+        position: relative;
+        display: inline-block;
+        height: 9vw;
+        width: 9vw;
+        top: 30%;
+        left: 14%;
+    }
+
+    .pointsB {
+        font-size: 7vmin;
+        top: 27%;
+    }
+
+    .pointsW {
+        font-size: 7vmin;
+        top: 27%;
+    }
+
+    /* Clock */
+
+    .timer {
+        position: absolute;
+        bottom: 4%;
+        height: 12%;
+        width: 30%;
+        left: 35%;
+    }
+
+    .black-minutes {
+        height: 10%;
+        width: 10%;
+        left: 32%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .black-seconds {
+        height: 10%;
+        width: 10%;
+        left: 29%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .white-minutes {
+        height: 10%;
+        width: 10%;
+        left: 30%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .white-seconds {
+        height: 10%;
+        width: 10%;
+        left: 27%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    /* Rule & Win Modal */
+
+    .win-modal > h1 {
+        letter-spacing: 40px;
+        font-size: 4.5vmin;
+    }
+}
+
+
 @media (min-width: 1600px) and (min-height: 850px) {
     /* Desktop XXL */
 
@@ -3953,6 +4063,215 @@ html, body{
         left: 30%;
         top: 38%;
         font-size: 5vmin;
+    }
+
+}
+
+@media (min-width: 1750px) and (min-height: 700px) {
+                /* Desktop XXXL */
+
+    .startlobbyinput, .joinlobbyinput {
+        text-align: center;
+        margin: 0 47px;
+        font-size: 20px;
+    }
+
+    .input-cont {
+        top: 62%;
+        position: relative;
+    }
+    
+    .gameboard {
+        display: inline-block;
+        position: relative;
+        height: 26vw;
+        width: 26vw;
+        top: 15%;
+        left: 29%;
+    }
+
+    .title-bar {
+        top: 2%;
+        left: 35%;
+        height: 12%;
+        width: 31%;
+    }
+
+    .pointsboard-white {
+        position: relative;
+        display: inline-block;
+        height: 8vw;
+        width: 8vw;
+        top: 30%;
+        left: 41%;
+    }
+
+    .pointsboard-black {
+        position: relative;
+        display: inline-block;
+        height: 8vw;
+        width: 8vw;
+        top: 30%;
+        left: 15%;
+    }
+
+    .pointsB {
+        font-size: 6vmin;
+        top: 30%;
+    }
+
+    .pointsW {
+        font-size: 6vmin;
+        top: 30%;
+    }
+
+    /* Clock */
+
+    .black-minutes {
+        height: 10%;
+        width: 10%;
+        left: 34%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .black-seconds {
+        height: 10%;
+        width: 10%;
+        left: 30%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .white-minutes {
+        height: 10%;
+        width: 10%;
+        left: 30%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .white-seconds {
+        height: 10%;
+        width: 10%;
+        left: 26%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    /* Rule & Win Modal */
+
+    .win-modal > h1 {
+        letter-spacing: 38px;
+        font-size: 4.5vmin;
+    }
+
+}
+
+@media (min-width: 1800px) and (min-height: 800px) {
+                /* Desktop XXXL */
+
+    .startlobbyinput, .joinlobbyinput {
+        text-align: center;
+        margin: 0 49px;
+        font-size: 23px;
+    }
+
+    .input-cont {
+        top: 62%;
+        position: relative;
+    }
+    
+    .gameboard {
+        display: inline-block;
+        position: relative;
+        height: 28vw;
+        width: 28vw;
+        top: 15%;
+        left: 27%;
+    }
+
+    .title-bar {
+        top: 2%;
+        left: 35%;
+        height: 12%;
+        width: 31%;
+    }
+
+    .pointsboard-white {
+        position: relative;
+        display: inline-block;
+        height: 9vw;
+        width: 9vw;
+        top: 30%;
+        left: 41%;
+    }
+
+    .pointsboard-black {
+        position: relative;
+        display: inline-block;
+        height: 9vw;
+        width: 9vw;
+        top: 30%;
+        left: 12%;
+    }
+
+    .pointsB {
+        font-size: 7vmin;
+        top: 27%;
+    }
+
+    .pointsW {
+        font-size: 7vmin;
+        top: 27%;
+    }
+
+    /* Clock */
+
+    .timer {
+        bottom: 4%;
+        height: 12%;
+        width: 30%;
+        left: 35%;    
+    }
+
+    .black-minutes {
+        height: 10%;
+        width: 10%;
+        left: 32%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .black-seconds {
+        height: 10%;
+        width: 10%;
+        left: 29%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .white-minutes {
+        height: 10%;
+        width: 10%;
+        left: 30%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    .white-seconds {
+        height: 10%;
+        width: 10%;
+        left: 27%;
+        top: 38%;
+        font-size: 5vmin;
+    }
+
+    /* Rule & Win Modal */
+
+    .win-modal > h1 {
+        letter-spacing: 40px;
+        font-size: 4.5vmin;
     }
 
 }
